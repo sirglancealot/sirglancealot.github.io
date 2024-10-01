@@ -1,3 +1,6 @@
+showTime();
+showTemp();
+
 function showTime() {
     var date = new Date();
     var h = date.getHours(); // 0 - 23
@@ -19,11 +22,25 @@ function showTime() {
     s = (s < 10) ? "0" + s : s;
 
     var time = h + ":" + m;// + ":" + s + " " + session;
-    document.getElementById("MyClockDisplay").innerText = time;
-    document.getElementById("MyClockDisplay").textContent = time;
+    document.getElementById("MyClock").innerText = time;
+    document.getElementById("MyClock").textContent = time;
 
     setTimeout(showTime, 1000);
 
 }
 
-showTime();
+function showTemp() {
+    var WeatherEndpoint = 'https://api.open-meteo.com/v1/forecast?latitude=56.567&longitude=9.0271&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin&forecast_days=1&models=dmi_seamless';
+
+    fetch(WeatherEndpoint)
+    .then(response => response.json())
+    .then(data => weatherData(data))
+    .catch(error => console.error('Error:', error));
+
+    function weatherData(payload){
+        var maxtemp = payload.daily.temperature_2m_max;
+        document.getElementById("MaxTemp").textContent = payload.daily.temperature_2m_max;
+        document.getElementById("MinTemp").textContent = payload.daily.temperature_2m_min;
+        
+    }
+}

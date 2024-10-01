@@ -3,12 +3,24 @@ body {
 }
 
 .clock {
-    position: absolute;
+    position: center;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    /* transform: translateX(-50%) translateY(-50%); */
     color: #ffffff;
     font-size: 200px;
+    font-family: 'Ubuntu Condenced',sans-serif;
+    text-align: center;
+    letter-spacing: 7px;
+}
+
+.weather {
+    position: center;
+    top: 50%;
+    left: 50%;
+    /* transform: translateX(-50%) translateY(-50%); */
+    color: #ffffff;
+    font-size: 50px;
     font-family: 'Ubuntu Condenced',sans-serif;
     letter-spacing: 7px;
 }

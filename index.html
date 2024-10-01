@@ -6,7 +6,21 @@
 
 </head>
 <body>
-    <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+    <div id="MyClock" class="clock" onload="showTime()"></div>
+    
+    <table>
+        <tr>        
+            <th class="weather">Max</th>
+            <th class="weather"></th>
+            <th class="weather">Min</th>
+        </tr>
+        <tr>
+            <td><div id="MaxTemp" class="weather" onload="showTemp()"></div></td>
+            <td></td>
+            <td><div id="MinTemp" class="weather" onload="showTemp()"></div></td>
+        </tr>
+    </table>
+    <div id="MinTemp" class="weather" onload="showTemp()"></div>
     <script src="app.js"></script>
 </body>
 </html>
