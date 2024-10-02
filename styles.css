@@ -25,8 +25,8 @@ body {
     letter-spacing: 7px;
 }
 
-.weather-header {
-    position: center;
+.weatherheader {
+    position: right;
     top: 50%;
     left: 50%;
     /* transform: translateX(-50%) translateY(-50%); */
