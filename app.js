@@ -52,7 +52,7 @@ function showTemp() {
         document.getElementById("MinTemp").textContent = MinTemp;
         document.getElementById("NextTemp").textContent = NextTemp;
         
-        setTimeout(showTemp, 600000); // 10 minutes
+        //setTimeout(showTemp, 600000); // 10 minutes
     }
     
     function GetForecastDataArray(TimeArr,TempArr){
