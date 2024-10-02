@@ -10,17 +10,18 @@
     <div id="MyClock" class="clock" onload="showTime()"></div>
     
     <table class="table table-dark">
-        <tr>        
-            <th class="weatherheader">Max</th>
+        <tr>
+            <th class="weatherheader">Dagens temperatur</th>
             <th class="weatherheader"></th>
-            <th class="weatherheader">Min</th>
+            <th class="weatherheader">Temperatur lige nu</th>
         </tr>
         <tr>
-            <td class="weather"><div id="MaxTemp" onload="showTemp()"></div></td>
+            <td class="weather">Mellem <div id="MinTemp" onload="showTemp()"></div> og <div id="MaxTemp" onload="showTemp()"></div></td>
             <td class="weather"></td>
-            <td class="weather"><div id="MinTemp" onload="showTemp()"></div></td>
+            <td class="weather"><div id="NextTemp" onload="showTemp()"></div></td>
         </tr>
     </table>
+    <script src="app.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
