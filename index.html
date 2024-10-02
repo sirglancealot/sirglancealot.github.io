@@ -9,15 +9,15 @@
     <div id="MyClock" class="clock" onload="showTime()"></div>
     
     <table>
-        <tr>        
-            <th class="weather">Max</th>
-            <th class="weather"></th>
-            <th class="weather">Min</th>
+        <tr class="weather-header">        
+            <th>Max</th>
+            <th></th>
+            <th>Min</th>
         </tr>
-        <tr>
-            <td><div id="MaxTemp" class="weather" onload="showTemp()"></div></td>
+        <tr class="weather">
+            <td><div id="MaxTemp" onload="showTemp()"></div></td>
             <td></td>
-            <td><div id="MinTemp" class="weather" onload="showTemp()"></div></td>
+            <td><div id="MinTemp" onload="showTemp()"></div></td>
         </tr>
     </table>
     <div id="MinTemp" class="weather" onload="showTemp()"></div>
