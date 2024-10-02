@@ -27,9 +27,9 @@ body {
 }
 
 .weatherheader {
-    position: right;
-    top: 50%;
-    left: 50%;
+    /* position: right; */
+    /* top: 50%; */
+    /* left: 50%; */
     /* transform: translateX(-50%) translateY(-50%); */
     color: #ffffff;
     text-align: right;
