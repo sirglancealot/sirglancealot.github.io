@@ -1,5 +1,5 @@
 showTime();
-showTemp();
+forecastData();
 
 function showTime() {
     var date = new Date();
@@ -28,7 +28,7 @@ function showTime() {
     setTimeout(showTime, 1000);
 
 }
-function showTemp() {
+function forecastData() {
     var WeatherEndpoint = 'https://api.open-meteo.com/v1/forecast?latitude=56.567&longitude=9.0271&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin&forecast_days=1&models=dmi_seamless';
 
     fetch(WeatherEndpoint)
@@ -55,40 +55,40 @@ function showTemp() {
         
         setTimeout(showTemp, 600000); // 10 minutes
     }
-    
-    function GetForecastDataArray(TimeArr,TempArr){
-        var ForecastArr = [];    
-        var map;
-        for(let i = 0; i < TimeArr.length; i++){
-            map = {
-                Hour: TimeArr[i],
-                Temperature: TempArr[i]
-            };
-            ForecastArr.push(map);
-        }
-        return ForecastArr;
-    };
+}
 
-    function GetNextForecastItem(ForecastArr) {
-        return ForecastArr.Hour = GetCurrentHour();
+function GetForecastDataArray(TimeArr,TempArr){
+    var ForecastArr = [];    
+    var map;
+    for(let i = 0; i < TimeArr.length; i++){
+        map = {
+            Hour: TimeArr[i],
+            Temperature: TempArr[i]
+        };
+        ForecastArr.push(map);
     }
+    return ForecastArr;
+};
 
-    function GetCurrentHour(){
-        var targetDate = new Date();
-        targetDate.setDate(targetDate.getDate());
-        var dd = targetDate.getDate();
-        var mm = targetDate.getMonth() + 1;
-        var yyyy = targetDate.getFullYear();
-        var hh = targetDate.getHours();
-        var dateCurrent = yyyy +'-'+ leadingZero(mm) + "-" + leadingZero(dd) + "T" + leadingZero(hh) +':00';
-        
-        return dateCurrent;
+function GetNextForecastItem(ForecastArr) {
+    return ForecastArr.Hour = GetCurrentHour();
+}
 
-        function leadingZero(value) {
-        if (value < 10) {
-            return "0" + value.toString();
-        }
-            return value.toString();
-        }
-    };
+function GetCurrentHour(){
+    var targetDate = new Date();
+    targetDate.setDate(targetDate.getDate());
+    var dd = targetDate.getDate();
+    var mm = targetDate.getMonth() + 1;
+    var yyyy = targetDate.getFullYear();
+    var hh = targetDate.getHours();
+    var dateCurrent = yyyy +'-'+ leadingZero(mm) + "-" + leadingZero(dd) + "T" + leadingZero(hh) +':00';
+    
+    return dateCurrent;
+
+    function leadingZero(value) {
+    if (value < 10) {
+        return "0" + value.toString();
+    }
+        return value.toString();
+    }
 }
