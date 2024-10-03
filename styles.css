@@ -2,6 +2,10 @@ body {
     background: black;
 }
 
+table {
+    background: #4d4d4d;
+}
+
 .clock {
     position: center;
     top: 50%;
