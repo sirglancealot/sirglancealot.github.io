@@ -1,5 +1,5 @@
 body {
-    background: black;
+    background: white;
 }
 
 table {
@@ -16,7 +16,7 @@ table {
     top: 50%;
     left: 50%;
     /* transform: translateX(-50%) translateY(-50%); */
-    color: #ffffff;
+    color: #616161;
     font-size: 200px;
     font-family: 'Ubuntu Condenced',sans-serif;
     text-align: center;
@@ -28,7 +28,7 @@ table {
     top: 50%;
     left: 50%;
     /* transform: translateX(-50%) translateY(-50%); */
-    color: #ffffff;
+    color: #616161;
     text-align: right;
     font-size: 30px;
     font-family: 'Ubuntu Condenced',sans-serif;
@@ -40,7 +40,7 @@ table {
     /* top: 50%; */
     /* left: 50%; */
     /* transform: translateX(-50%) translateY(-50%); */
-    color: #ffffff;
+    color: #616161;
     text-align: right;
     font-size: 10px;
     font-family: 'Ubuntu Condenced',sans-serif;
