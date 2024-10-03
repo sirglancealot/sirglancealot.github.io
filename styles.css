@@ -4,12 +4,19 @@ body {
 
 table {
     background-color: #e8e8e8;
-    margin: 40px; /* Adjust the value as needed */
+    margin: 20px; /* Adjust the value as needed */
     padding: 10px; /* Optional: Add padding if you want space inside the table */
     border-collapse: separate; /* Ensures padding works inside the table */
     border-spacing: 10px; /* Adds space between table cells */
-    border-radius: 7px; /* Rounds the corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0.1, 0.3); /* Adds a subtle shadow */
+    border-radius: 15px; /* Rounds the corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    max-width: calc(100% - 40px); /* Ensures the table doesn't exceed the container width */
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+}
+
+.table-container {
+    overflow-x: auto; /* Allows horizontal scrolling if needed */
+    padding: 20px; /* Adds space around the table */
 }
 
 .clock {
