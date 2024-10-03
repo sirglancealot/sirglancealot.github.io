@@ -30,7 +30,7 @@ function showTime() {
 }
 function forecastData() {
     var WeatherEndpoint = 'https://api.open-meteo.com/v1/forecast?latitude=56.567&longitude=9.0271&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin&forecast_days=1&models=dmi_seamless';
-
+    var NewEndpoint = 'https://api.open-meteo.com/v1/forecast?latitude=56.567&longitude=9.0271&minutely_15=temperature_2m,rain,snowfall,wind_speed_10m,is_day&hourly=temperature_2m,rain,cloud_cover,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin&models=dmi_seamless';
     fetch(WeatherEndpoint)
     .then(response => response.json())
     .then(data => weatherData(data))
