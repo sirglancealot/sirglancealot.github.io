@@ -16,7 +16,7 @@ table {
 }
 .pre-table {
     margin: 30px auto;
-    width: 200px;
+    max-width: 800%
     padding-left: 0px;
     padding-right: 5px;
     padding-top: 0px;
