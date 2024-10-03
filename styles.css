@@ -4,11 +4,11 @@ body {
 
 table {
     background-color: #e8e8e8;
-    margin: 20px; /* Adjust the value as needed */
+    margin: 40px; /* Adjust the value as needed */
     padding: 10px; /* Optional: Add padding if you want space inside the table */
     border-collapse: separate; /* Ensures padding works inside the table */
     border-spacing: 10px; /* Adds space between table cells */
-    border-radius: 15px; /* Rounds the corners */
+    border-radius: 7px; /* Rounds the corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0.1, 0.3); /* Adds a subtle shadow */
 }
 
