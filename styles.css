@@ -29,10 +29,12 @@ table {
     color: #616161;
     font-size: 30px;
     font-family: 'Ubuntu Condenced',sans-serif;
+    width: 200px;
 }
 
 .weatherheader {
     color: #616161;
     font-size: 10px;
     font-family: 'Ubuntu Condenced',sans-serif;
+    width: 200px;
 }
