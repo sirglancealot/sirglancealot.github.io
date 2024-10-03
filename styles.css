@@ -14,14 +14,15 @@ table {
 
 .clock {
     position: center;
-    top: 50%;
+    /* top: 50%;
     left: 50%;
-    /* transform: translateX(-50%) translateY(-50%); */
+    transform: translateX(-50%) translateY(-50%); 
+    text-align: center;
+    letter-spacing: 7px;
+    */
     color: #616161;
     font-size: 200px;
     font-family: 'Ubuntu Condenced',sans-serif;
-    text-align: center;
-    letter-spacing: 7px;
 }
 
 .weather {
