@@ -27,15 +27,11 @@ table {
 .weather {
     color: #616161;
     font-size: 30px;
-    font-family: 'Ubuntu Condenced',sans-serif
-    text-align: center;
-    vertical-align: middle;
+    font-family: 'Ubuntu Condenced',sans-serif;
 }
 
 .weatherheader {
     color: #616161;
     font-size: 10px;
-    font-family: 'Ubuntu Condenced',sans-serif
-    text-align: center;
-    vertical-align: middle;
+    font-family: 'Ubuntu Condenced',sans-serif;
 }
