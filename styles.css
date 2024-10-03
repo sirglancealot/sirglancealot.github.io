@@ -12,7 +12,7 @@ table {
     border-collapse: separate; /* Ensures padding works inside the table */
     border-spacing: 10px; /* Adds space between table cells */
     border-radius: 15px; /* Rounds the corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0); /* Adds a subtle shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
     box-sizing: border-box; /* Includes padding and border in the element's total width and height */
 }
 
