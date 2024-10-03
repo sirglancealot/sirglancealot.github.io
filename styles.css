@@ -3,7 +3,12 @@ body {
 }
 
 table {
-    background: #4d4d4d;
+    background-color: #4d4d4d;
+    border: 1px solid;
+    margin: 30px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 0px 0px 36px 15px rgba(0, 0, 0, 0.28);
 }
 
 .clock {
