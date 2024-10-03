@@ -48,8 +48,8 @@ function showTemp() {
         ForecastArray = GetForecastDataArray(Time,ForecastTemp);
         var CurrentHour = GetCurrentHour();
         var NextTemp = ForecastArray.find(GetNextForecastItem).Temperature + ' ' + HourlyUnits.temperature_2m;
-        document.getElementById("MaxTemp").textContent = MaxTemp;
-        document.getElementById("MinTemp").textContent = MinTemp;
+        //document.getElementById("MaxTemp").textContent = MaxTemp;
+        //document.getElementById("MinTemp").textContent = MinTemp;
         document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
         document.getElementById("NextTemp").textContent = NextTemp;
         
