@@ -14,14 +14,6 @@ table {
     border-bottom-right-radius: 7px;
 }
 
-td, th {
-    text-align: center;
-    vertical-align: middle;
-    border: none;
-    padding: 15px;
-    width: 200;
-}
-
 .pre-table {
     margin: 30px auto;
     max-width: 80%
@@ -50,25 +42,27 @@ td, th {
 }
 
 .weather {
-    position: right;
     top: 50%;
     left: 50%;
-    /* transform: translateX(-50%) translateY(-50%); */
     color: #616161;
     text-align: right;
     font-size: 30px;
     font-family: 'Ubuntu Condenced',sans-serif;
     letter-spacing: 7px;
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+    padding: 15px;
+    width: 200;
 }
 
 .weatherheader {
-    /* position: right; */
-    /* top: 50%; */
-    /* left: 50%; */
-    /* transform: translateX(-50%) translateY(-50%); */
     color: #616161;
-    text-align: right;
     font-size: 10px;
-    font-family: 'Ubuntu Condenced',sans-serif;
-    /* letter-spacing: 7px; */
+    font-family: 'Ubuntu Condenced',sans-serif
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+    padding: 15px;
+    width: 200;
 }
