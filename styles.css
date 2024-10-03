@@ -4,23 +4,16 @@ body {
 
 table {
     background-color: #e8e8e8;
-    /*border: 1px solid;*/
-    margin: 30px auto;
-    width: 100%;
-    heigth: 100%;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
-}
-
-.pre-table {
     margin: 20px; /* Adjust the value as needed */
     padding: 10px; /* Optional: Add padding if you want space inside the table */
     border-collapse: separate; /* Ensures padding works inside the table */
     border-spacing: 10px; /* Adds space between table cells */
+    box-shadow: 0px 0px 36px 15px rgba(0, 0, 0, 0.28);
 }
-
 
 .clock {
     position: center;
