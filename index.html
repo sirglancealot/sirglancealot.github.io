@@ -8,19 +8,20 @@
 </head>
 <body>
     <div id="MyClock" class="clock" onload="showTime()"></div>
-    
-    <table class="table">
-        <tr>
-            <th class="weatherheader">Dagens temperatur</th>
-            <th class="weatherheader"></th>
-            <th class="weatherheader">Temperatur lige nu</th>
-        </tr>
-        <tr>
-            <td class="weather"><div id="MinTemp" onload="showTemp()"></div> - <div id="MaxTemp" onload="showTemp()"></div></td>
-            <td class="weather"></td>
-            <td class="weather"><div id="NextTemp" onload="showTemp()"></div></td>
-        </tr>
-    </table>
+    <div class=pre-table>
+        <table class="table">
+            <tr>
+                <th class="weatherheader">Dagens temperatur</th>
+                <th class="weatherheader"></th>
+                <th class="weatherheader">Temperatur lige nu</th>
+            </tr>
+            <tr>
+                <td class="weather"><div id="MinTemp" onload="showTemp()"></div> - <div id="MaxTemp" onload="showTemp()"></div></td>
+                <td class="weather"></td>
+                <td class="weather"><div id="NextTemp" onload="showTemp()"></div></td>
+            </tr>
+        </table>
+    </div>
     <script src="app.js"></script>
     <script src="app.js"></script>
 </body>
