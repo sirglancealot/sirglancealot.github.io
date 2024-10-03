@@ -41,6 +41,7 @@ function showTemp() {
         var HourlyUnits = payload.hourly_units;
         var MaxTemp = payload.daily.temperature_2m_max + ' ' + DailyUnits.temperature_2m_max;
         var MinTemp = payload.daily.temperature_2m_min + ' ' + DailyUnits.temperature_2m_min;
+        var MinToMaxTemp = payload.daily.temperature_2m_min + ' - ' + payload.daily.temperature_2m_min + ' ' + DailyUnits.temperature_2m_min;
         var ForecastTemp = payload.hourly.temperature_2m;
         var Time = payload.hourly.time;
         var ForecastArray = []
@@ -49,6 +50,7 @@ function showTemp() {
         var NextTemp = ForecastArray.find(GetNextForecastItem).Temperature + ' ' + HourlyUnits.temperature_2m;
         document.getElementById("MaxTemp").textContent = MaxTemp;
         document.getElementById("MinTemp").textContent = MinTemp;
+        document.getElementById("MinToMaxTemp").textContent = NextTemp;
         document.getElementById("NextTemp").textContent = NextTemp;
         
         //setTimeout(showTemp, 600000); // 10 minutes
