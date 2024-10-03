@@ -4,18 +4,16 @@ body {
 
 table {
     background-color: #e8e8e8;
-    border: 1px solid;
+    /*border: 1px solid;*/
     margin: 30px auto;
-    border-collapse: separate;
     border-spacing: 0;
-    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.28);
-    margin-left: 0px;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.28);
+    /*margin-left: 0px;
     margin-rigth: 5px;
     margin-top: 0px;
-    margin-bottom: 5px;
+    margin-bottom: 5px;*/
     width: 80%;
     heigth: 100%;
-    border: 1px solid #333;
 }
 
 .clock {
