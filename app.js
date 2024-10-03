@@ -53,7 +53,7 @@ function forecastData() {
         document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
         document.getElementById("NextTemp").textContent = NextTemp;
         
-        setTimeout(showTemp, 600000); // 10 minutes
+        setTimeout(forecastData, 1800000); // 30 minutes
     }
 }
 
