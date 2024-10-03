@@ -50,7 +50,7 @@ function showTemp() {
         var NextTemp = ForecastArray.find(GetNextForecastItem).Temperature + ' ' + HourlyUnits.temperature_2m;
         document.getElementById("MaxTemp").textContent = MaxTemp;
         document.getElementById("MinTemp").textContent = MinTemp;
-        document.getElementById("MinToMaxTemp").textContent = NextTemp;
+        document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
         document.getElementById("NextTemp").textContent = NextTemp;
         
         //setTimeout(showTemp, 600000); // 10 minutes
