@@ -44,14 +44,21 @@ function forecastData() {
         var MinToMaxTemp = payload.daily.temperature_2m_min[0] + ' - ' + payload.daily.temperature_2m_max[0] + ' ' + DailyUnits.temperature_2m_min;
         var ForecastTemp = payload.hourly.temperature_2m;
         var Time = payload.hourly.time;
+        var CurrentDataTime  = payload.minutely_15.time;
+        var CurrentDataTemp = payload.minutely_15.temperature_2m;
         var ForecastArray = []
         ForecastArray = GetForecastDataArray(Time,ForecastTemp);
-        var CurrentHour = GetCurrentHour();
-        var NextTemp = GetNextForecastItem(ForecastArray).Temperature + ' ' + HourlyUnits.temperature_2m;
+        
+        var ActualCurrentHour = GetCurrentHour();
+        var ActualCurrentQuarterHour = GetCurrentQuarterHour();
+        CurrentWeatherArray GetForecastDataArray(CurrentDataTime,CurrentDataTemp);
+        
+        var NextCurrentTemp = GetNextForecastItem(CurrentWeatherArray,ActualCurrentQuarterHour).Temperature + ' ' + minutely_15_units.temperature_2m;
+        var NextTemp = GetNextForecastItem(ForecastArray,ActualCurrentHour).Temperature + ' ' + HourlyUnits.temperature_2m;
         //document.getElementById("MaxTemp").textContent = MaxTemp;
         //document.getElementById("MinTemp").textContent = MinTemp;
         document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
-        document.getElementById("NextTemp").textContent = NextTemp;
+        document.getElementById("NextCurrentTemp").textContent = NextCurrentTemp;
         
         setTimeout(forecastData, 1800000); // 30 minutes
     }
@@ -70,12 +77,9 @@ function GetForecastDataArray(TimeArr,TempArr){
     return ForecastArr;
 };
 
-function GetNextForecastItem(ForecastArr) {
+function GetNextForecastItem(ForecastArr,Timeslot) {
     var CurrentHour = GetCurrentHour();
-    console.log('CurrentHour '+ CurrentHour);
     var CurrentData = ForecastArr.find((item) => item.Hour == CurrentHour);
-    console.log('CurrentData '+ CurrentData);
-    console.log('CurrentData Hour '+ CurrentData.Hour);
     return CurrentData;
 }
 
@@ -87,6 +91,36 @@ function GetCurrentHour(){
     var yyyy = targetDate.getFullYear();
     var hh = targetDate.getHours();
     var dateCurrent = yyyy +'-'+ leadingZero(mm) + "-" + leadingZero(dd) + "T" + leadingZero(hh) +':00';
+    
+    return dateCurrent;
+
+    function leadingZero(value) {
+    if (value < 10) {
+        return "0" + value.toString();
+    }
+        return value.toString();
+    }
+}
+
+function GetCurrentQuarterHour(){
+    var targetDate = new Date();
+    targetDate.setDate(targetDate.getDate());
+    var dd = targetDate.getDate();
+    var mm = targetDate.getMonth() + 1;
+    var yyyy = targetDate.getFullYear();
+    var hh = targetDate.getHours();
+    var m = targetDate.getMinutes();
+    var min;
+    if (m >= 0 && m < 15) {
+        min = '00';
+    } else if (m >= 15 && m < 30) {
+        min = '15';
+    } else if (m >= 30 && m < 45) {
+        min = '30';
+    } else if (m >= 45 && m <= 59) {
+        min = '45';
+    } 
+    var dateCurrent = yyyy +'-'+ leadingZero(mm) + "-" + leadingZero(dd) + "T" + leadingZero(hh) +':'+min;
     
     return dateCurrent;
 
