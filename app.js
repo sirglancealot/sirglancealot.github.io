@@ -47,7 +47,7 @@ function forecastData() {
         var ForecastArray = []
         ForecastArray = GetForecastDataArray(Time,ForecastTemp);
         var CurrentHour = GetCurrentHour();
-        var NextTemp = ForecastArray.find(GetNextForecastItem).Temperature + ' ' + HourlyUnits.temperature_2m;
+        var NextTemp = GetNextForecastItem(ForecastArray).Temperature + ' ' + HourlyUnits.temperature_2m;
         //document.getElementById("MaxTemp").textContent = MaxTemp;
         //document.getElementById("MinTemp").textContent = MinTemp;
         document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
