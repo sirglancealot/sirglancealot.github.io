@@ -41,7 +41,7 @@ function forecastData() {
         var HourlyUnits = payload.hourly_units;
         var MaxTemp = payload.daily.temperature_2m_max + ' ' + DailyUnits.temperature_2m_max;
         var MinTemp = payload.daily.temperature_2m_min + ' ' + DailyUnits.temperature_2m_min;
-        var MinToMaxTemp = payload.daily.temperature_2m_min + ' - ' + payload.daily.temperature_2m_max + ' ' + DailyUnits.temperature_2m_min;
+        var MinToMaxTemp = payload.daily.temperature_2m_min[0] + ' - ' + payload.daily.temperature_2m_max[0] + ' ' + DailyUnits.temperature_2m_min;
         var ForecastTemp = payload.hourly.temperature_2m;
         var Time = payload.hourly.time;
         var ForecastArray = []
