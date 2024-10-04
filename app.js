@@ -1,6 +1,5 @@
 showTime();
 forecastData();
-var WMOCodes = getWMOCodes();
 
 function showTime() {
     var date = new Date();
