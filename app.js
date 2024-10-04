@@ -37,34 +37,46 @@ function forecastData() {
     .catch(error => console.error('Error:', error));
 
     function weatherData(payload){
+        // Setting units for the various groupings: Daily, Hourly, Minutely
         var DailyUnits = payload.daily_units;
         var HourlyUnits = payload.hourly_units;
         var MinutelyUnits = payload.minutely_15_units;
+        
+        // Setting Min and max from daily payload
         var MaxTemp = payload.daily.temperature_2m_max + ' ' + DailyUnits.temperature_2m_max;
         var MinTemp = payload.daily.temperature_2m_min + ' ' + DailyUnits.temperature_2m_min;
         var MinToMaxTemp = payload.daily.temperature_2m_min[0] + ' - ' + payload.daily.temperature_2m_max[0] + ' ' + DailyUnits.temperature_2m_min;
+        
+        // Setting arrays and other variables for hourly temperatures
         var ForecastTemp = payload.hourly.temperature_2m;
         var Time = payload.hourly.time;
-        var CurrentDataTime  = payload.minutely_15.time;
-        var CurrentDataTemp = payload.minutely_15.temperature_2m;
         var ForecastArray = []
         ForecastArray = GetForecastDataArray(Time,ForecastTemp);
-        
         var ActualCurrentHour = GetCurrentHour();
+        var NextTemp = GetNextForecastItem(ForecastArray,ActualCurrentHour).Temperature + ' ' + HourlyUnits.temperature_2m;
+
+        // Setting arrays and other variables for mitutely temperatures
+        var CurrentDataTime  = payload.minutely_15.time;
+        var CurrentDataTemp = payload.minutely_15.temperature_2m;
+
+        // Getting forecast and current weather data
+        var CurrentWeatherArray = []
         var ActualCurrentQuarterHour = GetCurrentQuarterHour();
         CurrentWeatherArray = GetForecastDataArray(CurrentDataTime,CurrentDataTemp);
-        
         var NextCurrentTemp = GetNextForecastItem(CurrentWeatherArray,ActualCurrentQuarterHour).Temperature + ' ' + MinutelyUnits.temperature_2m;
-        var NextTemp = GetNextForecastItem(ForecastArray,ActualCurrentHour).Temperature + ' ' + HourlyUnits.temperature_2m;
+
+        // Mapping values to elementss
         //document.getElementById("MaxTemp").textContent = MaxTemp;
         //document.getElementById("MinTemp").textContent = MinTemp;
         document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
         document.getElementById("NextCurrentTemp").textContent = NextCurrentTemp;
-        
+
+        // Set update freq
         setTimeout(forecastData, 1800000); // 30 minutes
     }
 }
 
+// Generate object array combined with a timestamp and a value
 function GetForecastDataArray(TimeArr,TempArr){
     var ForecastArr = [];    
     var map;
@@ -78,12 +90,14 @@ function GetForecastDataArray(TimeArr,TempArr){
     return ForecastArr;
 };
 
+// Get an object in an array, defined by a timeslot
 function GetNextForecastItem(ForecastArr,Timeslot) {
     var CurrentHour = GetCurrentHour();
     var CurrentData = ForecastArr.find((item) => item.Hour == CurrentHour);
     return CurrentData;
 }
 
+// Get current hour in format: 2024-10-04T11:00
 function GetCurrentHour(){
     var targetDate = new Date();
     targetDate.setDate(targetDate.getDate());
@@ -103,6 +117,7 @@ function GetCurrentHour(){
     }
 }
 
+// Get current hour and quarter in format: 2024-10-04T11:15 (:00, :15, :30, :45)
 function GetCurrentQuarterHour(){
     var targetDate = new Date();
     targetDate.setDate(targetDate.getDate());
@@ -133,20 +148,7 @@ function GetCurrentQuarterHour(){
     }
 }
 
-function GetWMOCodes(){
-    function forecastData() {
-    var file = 'WMOWeatherInterpretationCodes.json';
-    fetch(file)
-    .then(response => response.json())
-    .then(data => formatWMOdata(data))
-    .catch(error => console.error('Error:', error));
-    }
-
-    function formatWMOdata(wmoPayload){
-        return wmoPayload;
-    }
-}
-
+// Setting WMO Weather interpretation codes (WW) for weather code
 var WMOCodes = {
     "WMOCodes": [
       {
