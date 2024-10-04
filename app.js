@@ -104,4 +104,5 @@ function GetWMOCodes(){
 
     function formatWMOdata(wmoPayload){
         return wmoPayload;
+    }
 }
