@@ -1,0 +1,69 @@
+{
+    "WMOCodes": [
+      {
+        "Code": "0",
+        "en-UK": "Clear sky",
+        "da-DK": "Klart vejr"
+      },
+      {
+        "Code": "1, 2, 3",
+        "en-UK": "Mainly clear, partly cloudy, and overcast",
+        "da-DK": "Mest klart, delvist overskyet, og overskyet"
+      },
+      {
+        "Code": "45, 48",
+        "en-UK": "Fog and depositing rime fog",
+        "da-DK": "Tåge og rimtåge"
+      },
+      {
+        "Code": "51, 53, 55",
+        "en-UK": "Drizzle: Light, moderate, and dense intensity",
+        "da-DK": "Støvregn: Let, moderat, og tæt intensitet"
+      },
+      {
+        "Code": "56, 57",
+        "en-UK": "Freezing Drizzle: Light and dense intensity",
+        "da-DK": "Underafkølet støvregn: Let og tæt intensitet"
+      },
+      {
+        "Code": "61, 63, 65",
+        "en-UK": "Rain: Slight, moderate and heavy intensity",
+        "da-DK": "Regn: Let, moderat og kraftig intensitet"
+      },
+      {
+        "Code": "66, 67",
+        "en-UK": "Freezing Rain: Light and heavy intensity",
+        "da-DK": "Underafkølet regn: Let og kraftig intensitet"
+      },
+      {
+        "Code": "71, 73, 75",
+        "en-UK": "Snow fall: Slight, moderate, and heavy intensity",
+        "da-DK": "Snefald: Let, moderat, og kraftig intensitet"
+      },
+      {
+        "Code": "77",
+        "en-UK": "Snow grains",
+        "da-DK": "Snefnug"
+      },
+      {
+        "Code": "80, 81, 82",
+        "en-UK": "Rain showers: Slight, moderate, and violent",
+        "da-DK": "Regnbyger: Let, moderat, og kraftig"
+      },
+      {
+        "Code": "85, 86",
+        "en-UK": "Snow showers slight and heavy",
+        "da-DK": "Snebyger: Let og kraftig"
+      },
+      {
+        "Code": "95 *",
+        "en-UK": "Thunderstorm: Slight or moderate",
+        "da-DK": "Tordenvejr: Let eller moderat"
+      },
+      {
+        "Code": "96, 99 *",
+        "en-UK": "Thunderstorm with slight and heavy hail",
+        "da-DK": "Tordenvejr med let og kraftig hagl"
+      }
+    ]
+  }
