@@ -71,7 +71,7 @@ function GetForecastDataArray(TimeArr,TempArr){
 };
 
 function GetNextForecastItem(ForecastArr) {
-    var CurrentData = ForecastArr.find((item => item == GetCurrentHour());
+    var CurrentData = ForecastArr.find((item) => item == GetCurrentHour());
     return CurrentData;
 }
 
