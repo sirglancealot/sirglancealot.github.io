@@ -98,7 +98,10 @@ function GetWMOCodes(){
     var file = 'WMOWeatherInterpretationCodes.json';
     fetch(file)
     .then(response => response.json())
-    .then(data => return data)
+    .then(data => formatWMOdata(data))
     .catch(error => console.error('Error:', error));
     }
+
+    function formatWMOdata(wmoPayload){
+        return wmoPayload;
 }
