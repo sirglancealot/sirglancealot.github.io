@@ -1,5 +1,6 @@
 showTime();
 forecastData();
+var WMOCodes = getWMOCodes();
 
 function showTime() {
     var date = new Date();
@@ -90,5 +91,15 @@ function GetCurrentHour(){
         return "0" + value.toString();
     }
         return value.toString();
+    }
+}
+
+function GetWMOCodes(){
+    function forecastData() {
+    var file = 'WMOWeatherInterpretationCodes.json';
+    fetch(file)
+    .then(response => response.json())
+    .then(data => return data)
+    .catch(error => console.error('Error:', error));
     }
 }
