@@ -51,7 +51,7 @@ function forecastData() {
         
         var ActualCurrentHour = GetCurrentHour();
         var ActualCurrentQuarterHour = GetCurrentQuarterHour();
-        CurrentWeatherArray GetForecastDataArray(CurrentDataTime,CurrentDataTemp);
+        CurrentWeatherArray = GetForecastDataArray(CurrentDataTime,CurrentDataTemp);
         
         var NextCurrentTemp = GetNextForecastItem(CurrentWeatherArray,ActualCurrentQuarterHour).Temperature + ' ' + minutely_15_units.temperature_2m;
         var NextTemp = GetNextForecastItem(ForecastArray,ActualCurrentHour).Temperature + ' ' + HourlyUnits.temperature_2m;
