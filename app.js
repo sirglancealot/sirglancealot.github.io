@@ -39,6 +39,7 @@ function forecastData() {
     function weatherData(payload){
         var DailyUnits = payload.daily_units;
         var HourlyUnits = payload.hourly_units;
+        var MinutelyUnits = payload.minutely_15_units;
         var MaxTemp = payload.daily.temperature_2m_max + ' ' + DailyUnits.temperature_2m_max;
         var MinTemp = payload.daily.temperature_2m_min + ' ' + DailyUnits.temperature_2m_min;
         var MinToMaxTemp = payload.daily.temperature_2m_min[0] + ' - ' + payload.daily.temperature_2m_max[0] + ' ' + DailyUnits.temperature_2m_min;
@@ -53,7 +54,7 @@ function forecastData() {
         var ActualCurrentQuarterHour = GetCurrentQuarterHour();
         CurrentWeatherArray = GetForecastDataArray(CurrentDataTime,CurrentDataTemp);
         
-        var NextCurrentTemp = GetNextForecastItem(CurrentWeatherArray,ActualCurrentQuarterHour).Temperature + ' ' + minutely_15_units.temperature_2m;
+        var NextCurrentTemp = GetNextForecastItem(CurrentWeatherArray,ActualCurrentQuarterHour).Temperature + ' ' + MinutelyUnits.temperature_2m;
         var NextTemp = GetNextForecastItem(ForecastArray,ActualCurrentHour).Temperature + ' ' + HourlyUnits.temperature_2m;
         //document.getElementById("MaxTemp").textContent = MaxTemp;
         //document.getElementById("MinTemp").textContent = MinTemp;
