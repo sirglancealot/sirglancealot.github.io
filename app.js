@@ -247,7 +247,11 @@ function GetCurrentQuarterHour() {
 
 // Setting WMO Weather interpretation codes (WW) for weather code
 function GetWMOCodes(WeatherCode) {
-  //if (!WeatherCode) { WeatherCode = 0;}
+  if (!WeatherCode) { 
+    console.log('No weather code: '+WeatherCode) 
+    return "";
+  }
+
   Codes = {
     WMOCodes: [
       { Code: "0", enUK: "Clear sky", daDK: "Klart vejr" },
