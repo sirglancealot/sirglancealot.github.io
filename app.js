@@ -282,7 +282,7 @@ function GetWMOCodes(WeatherCode) {
   };
   console.log('WeatherCode: '+WeatherCode);
   var WeatherCodePhrase = Codes.WMOCodes.find((item) => (item.Code = WeatherCode));
-  console.log('Weathercodeitem: '+ CodePhrase);
-  console.log('Weathercodeitem phrase: '+ CodePhrase.daDK);
+  console.log('Weathercodeitem: '+ WeatherCodePhrase);
+  console.log('Weathercodeitem phrase: '+ WeatherCodePhrase.daDK);
   return WeatherCodePhrase.daDK;
 }
