@@ -189,75 +189,38 @@ function GetCurrentQuarterHour(){
 function GetWMOCodes(WeatherCode){
   //if (!WeatherCode) { WeatherCode = 0;}
   Codes = {
-      "WMOCodes": [
-        {
-          "Code": ["0"],
-          "enUK": "Clear sky",
-          "daDK": "Klart vejr"
-        },
-        {
-          "Code": ["1", "2", "3"],
-          "enUK": "Mainly clear, partly cloudy, and overcast",
-          "daDK": "Mest klart, delvist overskyet, og overskyet"
-        },
-        {
-          "Code": ["45", "48"],
-          "enUK": "Fog and depositing rime fog",
-          "daDK": "Tåge og rimtåge"
-        },
-        {
-          "Code": ["51", "53", "55"],
-          "enUK": "Drizzle: Light, moderate, and dense intensity",
-          "daDK": "Støvregn: Let, moderat, og tæt intensitet"
-        },
-        {
-          "Code": ["56", "57"],
-          "enUK": "Freezing Drizzle: Light and dense intensity",
-          "daDK": "Underafkølet støvregn: Let og tæt intensitet"
-        },
-        {
-          "Code": ["61", "63", "65"],
-          "enUK": "Rain: Slight, moderate and heavy intensity",
-          "daDK": "Regn: Let, moderat og kraftig intensitet"
-        },
-        {
-          "Code": ["66", "67"],
-          "enUK": "Freezing Rain: Light and heavy intensity",
-          "daDK": "Underafkølet regn: Let og kraftig intensitet"
-        },
-        {
-          "Code": ["71", "73", "75"],
-          "enUK": "Snow fall: Slight, moderate, and heavy intensity",
-          "daDK": "Snefald: Let, moderat, og kraftig intensitet"
-        },
-        {
-          "Code": ["77"],
-          "enUK": "Snow grains",
-          "daDK": "Snefnug"
-        },
-        {
-          "Code": ["80", "81", "82"],
-          "enUK": "Rain showers: Slight, moderate, and violent",
-          "daDK": "Regnbyger: Let, moderat, og kraftig"
-        },
-        {
-          "Code": ["85", "86"],
-          "enUK": "Snow showers slight and heavy",
-          "daDK": "Snebyger: Let og kraftig"
-        },
-        {
-          "Code": ["95"],
-          "enUK": "Thunderstorm: Slight or moderate",
-          "daDK": "Tordenvejr: Let eller moderat"
-        },
-        {
-          "Code": ["96", "99"],
-          "enUK": "Thunderstorm with slight and heavy hail",
-          "daDK": "Tordenvejr med let og kraftig hagl"
-        }
-      ]
-    }
-  
-  var dkCodePhrase = Codes.WMOCodes.find((item) => item.Code.find((itemCodeArr) => itemCodeArr.includes(WeatherCode)));
-  return dkCodePhrase.daDK;
+    "WMOCodes": [
+        { "Code": 0, "enUK": "Clear sky", "daDK": "Klart vejr" },
+        { "Code": 1, "enUK": "Mainly clear", "daDK": "Hovedsageligt klart" },
+        { "Code": 2, "enUK": "Partly cloudy", "daDK": "Delvist overskyet" },
+        { "Code": 3, "enUK": "Overcast", "daDK": "Overskyet" },
+        { "Code": 45, "enUK": "Fog", "daDK": "Tåget" },
+        { "Code": 48, "enUK": "Depositing rime fog", "daDK": "Rimtåge" },
+        { "Code": 51, "enUK": "Drizzle: Light", "daDK": "Let støvregn" },
+        { "Code": 53, "enUK": "Drizzle: Moderate", "daDK": "Moderat støvregn" },
+        { "Code": 55, "enUK": "Drizzle: Dense intensity", "daDK": "Kraftig støvregn" },
+        { "Code": 56, "enUK": "Freezing Drizzle: Light", "daDK": "Kold støvregn: Let" },
+        { "Code": 57, "enUK": "Freezing Drizzle: Dense intensity", "daDK": "Kold støvregn: Kraftig intensitet" },
+        { "Code": 61, "enUK": "Rain: Slight", "daDK": "Let regn" },
+        { "Code": 63, "enUK": "Rain: Moderate", "daDK": "Moderat regn" },
+        { "Code": 65, "enUK": "Rain: Heavy intensity", "daDK": "Kraftig regn" },
+        { "Code": 66, "enUK": "Freezing Rain: Light", "daDK": "Let men kold regn" },
+        { "Code": 67, "enUK": "Freezing Rain: Heavy intensity", "daDK": "Kraftig kold regn" },
+        { "Code": 71, "enUK": "Snow fall: Slight", "daDK": "Let snefald" },
+        { "Code": 73, "enUK": "Snow fall: Moderate", "daDK": "Moderat snefald" },
+        { "Code": 75, "enUK": "Snow fall: Heavy intensity", "daDK": "Kraftig snefald" },
+        { "Code": 77, "enUK": "Snow grains", "daDK": "Snefnug" },
+        { "Code": 80, "enUK": "Rain showers: Slight", "daDK": "Lette regnbyger" },
+        { "Code": 81, "enUK": "Rain showers: Moderate", "daDK": "Moderate regnbyger" },
+        { "Code": 82, "enUK": "Rain showers: Violent", "daDK": "Kraftige regnbyger" },
+        { "Code": 85, "enUK": "Snow showers: Slight", "daDK": "Lette snebyger" },
+        { "Code": 86, "enUK": "Snow showers: Heavy", "daDK": "Kraftige snebyger" },
+        { "Code": 95, "enUK": "Thunderstorm: Slight or moderate", "daDK": "Let eller moderat tordenvejr" },
+        { "Code": 96, "enUK": "Thunderstorm with slight hail", "daDK": "Tordenvejr med let hagl" },
+        { "Code": 99, "enUK": "Thunderstorm with heavy hail", "daDK": "Tordenvejr med kraftig hagl" }
+    ]
+  }
+
+var dkCodePhrase = Codes.WMOCodes.find((item) => item.Code = WeatherCode);
+return dkCodePhrase.daDK;
 };
