@@ -56,12 +56,25 @@ function forecastData() {
         var NextTemp = GetNextForecastItem(ForecastArray,ActualCurrentHour).Temperature + ' ' + HourlyUnits.temperature_2m;
 
         // Setting arrays and other variables for mitutely temperatures
+        var ActualCurrentQuarterHour = GetCurrentQuarterHour();
         var CurrentDataTime  = payload.minutely_15.time;
         var CurrentDataTemp = payload.minutely_15.temperature_2m;
+        var minutelyTime = payload.minutely_15.time;
+        var minutelyTemperature = payload.minutely_15.temperature_2m;
+        var minutelyHumidity = payload.minutely_15.relative_humidity_2m;
+        var minutelyApparentTemperature = payload.minutely_15.apparent_temperature;
+        var minutelyRain = payload.minutely_15.rain;
+        var minutelySnowfall = payload.minutely_15.snowfall;
+        var minutelyWeatherCode = payload.minutely_15.weather_code;
+        var minutelyWindSpeed = payload.minutely_15.wind_speed_10m;
+        var minutelyLightningPotential = payload.minutely_15.lightning_potential;
+        var minutelyIsDay = payload.minutely_15.is_day;
 
+        var MinutelyWeatherArr = GetMinutelyWeatherIntoArray(minutelyTime, minutelyTemperature, minutelyHumidity, minutelyApparentTemperature, minutelyRain, minutelySnowfall, minutelyWeatherCode, minutelyWindSpeed, minutelyLightningPotential, minutelyIsDay);
+        var WebWeatherCode = GetNextForecastItem(MinutelyWeatherArr,ActualCurrentQuarterHour).WeatherCode;
         // Getting forecast and current weather data
         var CurrentWeatherArray = []
-        var ActualCurrentQuarterHour = GetCurrentQuarterHour();
+        
         CurrentWeatherArray = GetForecastDataArray(CurrentDataTime,CurrentDataTemp);
         var NextCurrentTemp = GetNextForecastItem(CurrentWeatherArray,ActualCurrentQuarterHour).Temperature + ' ' + MinutelyUnits.temperature_2m;
 
@@ -70,6 +83,7 @@ function forecastData() {
         //document.getElementById("MinTemp").textContent = MinTemp;
         document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
         document.getElementById("NextCurrentTemp").textContent = NextCurrentTemp;
+        document.getElementById("WebWeatherCode").textContent = WebWeatherCode;
 
         // Set update freq
         setTimeout(forecastData, 1800000); // 30 minutes
@@ -88,6 +102,29 @@ function GetForecastDataArray(TimeArr,TempArr){
         ForecastArr.push(map);
     }
     return ForecastArr;
+};
+
+// Generate array for current weather (minutely): time, temperature_2m, relative_humidity_2m, apparent_temperature, rain, snowfall, weather_code, wind_speed_10m, lightning_potential, is_day 
+
+function GetMinutelyWeatherIntoArray(Time, Temperature, Humidity, ApparentTemperature, Rain, Snowfall, WeatherCode, WindSpeed, LightningPotential, IsDay){
+  var MinutelyArr = [];    
+  var map;
+  for(let i = 0; i < TimeArr.length; i++){
+      map = {
+          Hour: TimeArr[i],
+          Temperature: TempArr[i], 
+          Humidity: Humidity[i], 
+          ApparentTemperature: ApparentTemperature[i], 
+          Rain: Rain[i],
+          Snowfall: Snowfall[i],
+          WeatherCode: GetWMOCodes(WeatherCode[i]),
+          WindSpeed: WindSpeed[i],
+          LightningPotential: LightningPotential[i],
+          IsDay: IsDay[i] 
+      };
+      MinutelyArr.push(map);
+  }
+  return MinutelyArr;
 };
 
 // Get an object in an array, defined by a timeslot
@@ -149,72 +186,78 @@ function GetCurrentQuarterHour(){
 }
 
 // Setting WMO Weather interpretation codes (WW) for weather code
-var WMOCodes = {
-    "WMOCodes": [
-      {
-        "Code": "0",
-        "en-UK": "Clear sky",
-        "da-DK": "Klart vejr"
-      },
-      {
-        "Code": "1, 2, 3",
-        "en-UK": "Mainly clear, partly cloudy, and overcast",
-        "da-DK": "Mest klart, delvist overskyet, og overskyet"
-      },
-      {
-        "Code": "45, 48",
-        "en-UK": "Fog and depositing rime fog",
-        "da-DK": "Tåge og rimtåge"
-      },
-      {
-        "Code": "51, 53, 55",
-        "en-UK": "Drizzle: Light, moderate, and dense intensity",
-        "da-DK": "Støvregn: Let, moderat, og tæt intensitet"
-      },
-      {
-        "Code": "56, 57",
-        "en-UK": "Freezing Drizzle: Light and dense intensity",
-        "da-DK": "Underafkølet støvregn: Let og tæt intensitet"
-      },
-      {
-        "Code": "61, 63, 65",
-        "en-UK": "Rain: Slight, moderate and heavy intensity",
-        "da-DK": "Regn: Let, moderat og kraftig intensitet"
-      },
-      {
-        "Code": "66, 67",
-        "en-UK": "Freezing Rain: Light and heavy intensity",
-        "da-DK": "Underafkølet regn: Let og kraftig intensitet"
-      },
-      {
-        "Code": "71, 73, 75",
-        "en-UK": "Snow fall: Slight, moderate, and heavy intensity",
-        "da-DK": "Snefald: Let, moderat, og kraftig intensitet"
-      },
-      {
-        "Code": "77",
-        "en-UK": "Snow grains",
-        "da-DK": "Snefnug"
-      },
-      {
-        "Code": "80, 81, 82",
-        "en-UK": "Rain showers: Slight, moderate, and violent",
-        "da-DK": "Regnbyger: Let, moderat, og kraftig"
-      },
-      {
-        "Code": "85, 86",
-        "en-UK": "Snow showers slight and heavy",
-        "da-DK": "Snebyger: Let og kraftig"
-      },
-      {
-        "Code": "95 *",
-        "en-UK": "Thunderstorm: Slight or moderate",
-        "da-DK": "Tordenvejr: Let eller moderat"
-      },
-      {
-        "Code": "96, 99 *",
-        "en-UK": "Thunderstorm with slight and heavy hail",
-        "da-DK": "Tordenvejr med let og kraftig hagl"
-      }
-    ]
-  };
+function GetWMOCodes(WeatherCode){
+  //if (!WeatherCode) { WeatherCode = 0;}
+  Codes = {
+      "WMOCodes": [
+        {
+          "Code": ["0"],
+          "enUK": "Clear sky",
+          "daDK": "Klart vejr"
+        },
+        {
+          "Code": ["1", "2", "3"],
+          "enUK": "Mainly clear, partly cloudy, and overcast",
+          "daDK": "Mest klart, delvist overskyet, og overskyet"
+        },
+        {
+          "Code": ["45", "48"],
+          "enUK": "Fog and depositing rime fog",
+          "daDK": "Tåge og rimtåge"
+        },
+        {
+          "Code": ["51", "53", "55"],
+          "enUK": "Drizzle: Light, moderate, and dense intensity",
+          "daDK": "Støvregn: Let, moderat, og tæt intensitet"
+        },
+        {
+          "Code": ["56", "57"],
+          "enUK": "Freezing Drizzle: Light and dense intensity",
+          "daDK": "Underafkølet støvregn: Let og tæt intensitet"
+        },
+        {
+          "Code": ["61", "63", "65"],
+          "enUK": "Rain: Slight, moderate and heavy intensity",
+          "daDK": "Regn: Let, moderat og kraftig intensitet"
+        },
+        {
+          "Code": ["66", "67"],
+          "enUK": "Freezing Rain: Light and heavy intensity",
+          "daDK": "Underafkølet regn: Let og kraftig intensitet"
+        },
+        {
+          "Code": ["71", "73", "75"],
+          "enUK": "Snow fall: Slight, moderate, and heavy intensity",
+          "daDK": "Snefald: Let, moderat, og kraftig intensitet"
+        },
+        {
+          "Code": ["77"],
+          "enUK": "Snow grains",
+          "daDK": "Snefnug"
+        },
+        {
+          "Code": ["80", "81", "82"],
+          "enUK": "Rain showers: Slight, moderate, and violent",
+          "daDK": "Regnbyger: Let, moderat, og kraftig"
+        },
+        {
+          "Code": ["85", "86"],
+          "enUK": "Snow showers slight and heavy",
+          "daDK": "Snebyger: Let og kraftig"
+        },
+        {
+          "Code": ["95"],
+          "enUK": "Thunderstorm: Slight or moderate",
+          "daDK": "Tordenvejr: Let eller moderat"
+        },
+        {
+          "Code": ["96", "99"],
+          "enUK": "Thunderstorm with slight and heavy hail",
+          "daDK": "Tordenvejr med let og kraftig hagl"
+        }
+      ]
+    }
+  
+  var dkCodePhrase = Codes.WMOCodes.find((item) => item.Code.find((itemCodeArr) => itemCodeArr.includes(WeatherCode)));
+  return dkCodePhrase.daDK;
+};
