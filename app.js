@@ -280,7 +280,9 @@ function GetWMOCodes(WeatherCode) {
       { Code: 99, enUK: "Thunderstorm with heavy hail", daDK: "Tordenvejr med kraftig hagl" }
     ]
   };
-
+  console.log('WeatherCode: '+WeatherCode);
   var CodePhrase = Codes.WMOCodes.find((item) => (item.Code = WeatherCode));
+  console.log('Weathercodeitem: '+ CodePhrase);
+  console.log('Weathercodeitem phrase: '+ CodePhrase.daDK);
   return CodePhrase.daDK;
 }
