@@ -251,8 +251,8 @@ function GetWMOCodes(WeatherCode) {
   Codes = {
     WMOCodes: [
       { Code: 0, enUK: "Clear sky", daDK: "Klart vejr" },
-      { Code: 1, enUK: "Mainly clear", daDK: "Hovedsageligt klart" },
-      { Code: 2, enUK: "Partly cloudy", daDK: "Delvist overskyet" },
+      { Code: 1, enUK: "Mainly clear", daDK: "Mest klart vejr" },
+      { Code: 2, enUK: "Partly cloudy", daDK: "Delvist overskyet vejr" },
       { Code: 3, enUK: "Overcast", daDK: "Overskyet" },
       { Code: 45, enUK: "Fog", daDK: "Tåget" },
       { Code: 48, enUK: "Depositing rime fog", daDK: "Rimtåge" },
