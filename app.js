@@ -251,7 +251,7 @@ function GetWMOCodes(WeatherCode) {
     console.log('No weather code: '+WeatherCode) 
     return "";
   }
-
+  var stringCode = WeatherCode.toString();
   Codes = { "WMOCodes": [
       { "Code": "0", "enUK": "Clear sky", "dkDK": "Klart vejr" },
       { "Code": "1", "enUK": "Mainly clear", "dkDK": "Mest klart vejr" },
@@ -283,7 +283,7 @@ function GetWMOCodes(WeatherCode) {
       { "Code": "99", "enUK": "Thunderstorm with heavy hail", "dkDK": "Tordenvejr med kraftig hagl" }
     ]
   };
-  var WeatherCodePhrase = Codes.WMOCodes.find((item) => item.Code = WeatherCode);
-  console.log('WeatherCode: '+WeatherCode + ' Weathercodeitem phrase: '+ WeatherCodePhrase.daDK);
+  var WeatherCodePhrase = Codes.WMOCodes.find((item) => item.Code = stringCode);
+  console.log('WeatherCode: '+stringCode + ' Weathercodeitem phrase: '+ WeatherCodePhrase.daDK);
   return WeatherCodePhrase.daDK;
 }
