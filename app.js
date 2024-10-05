@@ -111,8 +111,8 @@ function GetMinutelyWeatherIntoArray(Time, Temperature, Humidity, ApparentTemper
   var map;
   for(let i = 0; i < Time.length; i++){
       map = {
-          Hour: TimeArr[i],
-          Temperature: TempArr[i], 
+          Hour: Time[i],
+          Temperature: Temperature[i], 
           Humidity: Humidity[i], 
           ApparentTemperature: ApparentTemperature[i], 
           Rain: Rain[i],
