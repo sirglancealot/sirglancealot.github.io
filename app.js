@@ -250,11 +250,11 @@ function GetWMOCodes(WeatherCode) {
   //if (!WeatherCode) { WeatherCode = 0;}
   Codes = {
     WMOCodes: [
-      { Code: 0, enUK: "Clear sky", daDK: "Klart vejr" },
-      { Code: 1, enUK: "Mainly clear", daDK: "Mest klart vejr" },
-      { Code: 2, enUK: "Partly cloudy", daDK: "Delvist overskyet vejr" },
-      { Code: 3, enUK: "Overcast", daDK: "Overskyet" },
-      { Code: 45, enUK: "Fog", daDK: "Tåget" },
+      { Code: "0", enUK: "Clear sky", daDK: "Klart vejr" },
+      { Code: "1", enUK: "Mainly clear", daDK: "Mest klart vejr" },
+      { Code: "2", enUK: "Partly cloudy", daDK: "Delvist overskyet vejr" },
+      { Code: "3", enUK: "Overcast", daDK: "Overskyet" },
+      { Code: "45", enUK: "Fog", daDK: "Tåget" },
       { Code: 48, enUK: "Depositing rime fog", daDK: "Rimtåge" },
       { Code: 51, enUK: "Drizzle: Light", daDK: "Let støvregn" },
       { Code: 53, enUK: "Drizzle: Moderate", daDK: "Moderat støvregn" },
@@ -281,8 +281,8 @@ function GetWMOCodes(WeatherCode) {
     ]
   };
   console.log('WeatherCode: '+WeatherCode);
-  var CodePhrase = Codes.WMOCodes.find((item) => (item.Code = WeatherCode));
+  var WeatherCodePhrase = Codes.WMOCodes.find((item) => (item.Code = WeatherCode));
   console.log('Weathercodeitem: '+ CodePhrase);
   console.log('Weathercodeitem phrase: '+ CodePhrase.daDK);
-  return CodePhrase.daDK;
+  return WeatherCodePhrase.daDK;
 }
