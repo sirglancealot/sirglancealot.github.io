@@ -109,7 +109,7 @@ function GetForecastDataArray(TimeArr,TempArr){
 function GetMinutelyWeatherIntoArray(Time, Temperature, Humidity, ApparentTemperature, Rain, Snowfall, WeatherCode, WindSpeed, LightningPotential, IsDay){
   var MinutelyArr = [];    
   var map;
-  for(let i = 0; i < TimeArr.length; i++){
+  for(let i = 0; i < Time.length; i++){
       map = {
           Hour: TimeArr[i],
           Temperature: TempArr[i], 
