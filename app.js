@@ -62,10 +62,7 @@ function forecastData() {
     var ForecastArray = [];
     ForecastArray = GetForecastDataArray(Time, ForecastTemp);
     var ActualCurrentHour = GetCurrentHour();
-    var NextTemp =
-      GetNextForecastItem(ForecastArray, ActualCurrentHour).Temperature +
-      " " +
-      HourlyUnits.temperature_2m;
+    var NextTemp = GetNextForecastItem(ForecastArray, ActualCurrentHour).Temperature + " " + HourlyUnits.temperature_2m;
 
     // Setting arrays and other variables for mitutely temperatures
     var ActualCurrentQuarterHour = GetCurrentQuarterHour();
@@ -99,21 +96,25 @@ function forecastData() {
       CurrentDataTime,
       CurrentDataTemp
     );
-    var NextCurrentTemp =
-      GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour)
-        .Temperature +
-      " " +
-      MinutelyUnits.temperature_2m;
-
+    var WebCurrentTemp = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour).Temperature + " " + MinutelyUnits.temperature_2m;
+    var WebCurrentHumidity = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour).Humidity + " " + MinutelyUnits.relative_humidity_2m;
+    var WebCurrentApparentTemperature = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour).ApparentTemperature + " " + MinutelyUnits.apparent_temperature;
+    var WebCurrentRain = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour).Rain + " " + MinutelyUnits.rain;
+    var WebCurrentSnowfall = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour).Snowfall + " " + MinutelyUnits.snowfall;
+    var WebCurrentWindSpeed = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour).WindSpeed + " " + MinutelyUnits.wind_speed_10m;
     var WebCurrentWeather = GetNextForecastItem(MinutelyWeatherArr,ActualCurrentQuarterHour).WeatherCode +' og '+ NextCurrentTemp;
     // Getting forecast and current weather data
     var CurrentWeatherArray = [];
-    var WebCurrentWeatherIcon = 'https://openweathermap.org/img/wn/01d@2x.png';
+    var WebCurrentWeatherIcon = GetNextForecastItem(MinutelyWeatherArr,ActualCurrentQuarterHour).Image;
     // Mapping values to elementss
-    //document.getElementById("MaxTemp").textContent = MaxTemp;
-    //document.getElementById("MinTemp").textContent = MinTemp;
+
     document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
-    //document.getElementById("NextCurrentTemp").textContent = NextCurrentTemp;
+    //document.getElementById("WebCurrentTemp").textContent = WebCurrentTemp;
+    //document.getElementById("WebCurrentSnowfall").textContent = WebCurrentSnowfall;
+    document.getElementById("WebCurrentHumidity").textContent = WebCurrentHumidity;
+    document.getElementById("WebCurrentRain").textContent = WebCurrentRain;
+    document.getElementById("WebCurrentApparentTemperature").textContent = WebCurrentApparentTemperature;
+    document.getElementById("WebCurrentWindSpeed").textContent = WebCurrentWindSpeed;
     document.getElementById("WebCurrentWeather").textContent = WebCurrentWeather;
     document.getElementById("WebCurrentWeatherIcon").src = WebCurrentWeatherIcon; 
     // Set update freq
@@ -252,34 +253,34 @@ function GetWMOCodes(WeatherCode) {
   }
   var stringCode = WeatherCode.toString();
   Codes = { "WMOCodes": [
-      { "Code": "0", "enUK": "Clear sky", "daDK": "Klart vejr" },
-      { "Code": "1", "enUK": "Mainly clear", "daDK": "Mest klart vejr" },
-      { "Code": "2", "enUK": "Partly cloudy", "daDK": "Delvist overskyet vejr" },
-      { "Code": "3", "enUK": "Overcast", "daDK": "Overskyet" },
-      { "Code": "45", "enUK": "Fog", "daDK": "Tåget" },
-      { "Code": "48", "enUK": "Depositing rime fog", "daDK": "Rimtåge" },
-      { "Code": "51", "enUK": "Drizzle: Light", "daDK": "Let støvregn" },
-      { "Code": "53", "enUK": "Drizzle: Moderate", "daDK": "Moderat støvregn" },
-      { "Code": "55", "enUK": "Drizzle: Dense intensity", "daDK": "Kraftig støvregn" },
-      { "Code": "56", "enUK": "Freezing Drizzle: Light", "daDK": "Kold støvregn: Let" },
-      { "Code": "57", "enUK": "Freezing Drizzle: Dense intensity", "daDK": "Kold støvregn: Kraftig intensitet" },
-      { "Code": "61", "enUK": "Rain: Slight", "daDK": "Let regn" },
-      { "Code": "63", "enUK": "Rain: Moderate", "daDK": "Moderat regn" },
-      { "Code": "65", "enUK": "Rain: Heavy intensity", "daDK": "Kraftig regn" },
-      { "Code": "66", "enUK": "Freezing Rain: Light", "daDK": "Let men kold regn" },
-      { "Code": "67", "enUK": "Freezing Rain: Heavy intensity", "daDK": "Kraftig kold regn" },
-      { "Code": "71", "enUK": "Snow fall: Slight", "daDK": "Let snefald" },
-      { "Code": "73", "enUK": "Snow fall: Moderate", "daDK": "Moderat snefald" },
-      { "Code": "75", "enUK": "Snow fall: Heavy intensity", "daDK": "Kraftig snefald" },
-      { "Code": "77", "enUK": "Snow grains", "daDK": "Snefnug" },
-      { "Code": "80", "enUK": "Rain showers: Slight", "daDK": "Lette regnbyger" },
-      { "Code": "81", "enUK": "Rain showers: Moderate", "daDK": "Moderate regnbyger" },
-      { "Code": "82", "enUK": "Rain showers: Violent", "daDK": "Kraftige regnbyger" },
-      { "Code": "85", "enUK": "Snow showers: Slight", "daDK": "Lette snebyger" },
-      { "Code": "86", "enUK": "Snow showers: Heavy", "daDK": "Kraftige snebyger" },
-      { "Code": "95", "enUK": "Thunderstorm: Slight or moderate", "daDK": "Let eller moderat tordenvejr" },
-      { "Code": "96", "enUK": "Thunderstorm with slight hail", "daDK": "Tordenvejr med let hagl" },
-      { "Code": "99", "enUK": "Thunderstorm with heavy hail", "daDK": "Tordenvejr med kraftig hagl" }
+      { "Code": "0", "enUK": "Clear sky", "daDK": "Klart vejr", "Image":"https://openweathermap.org/img/wn/01d@2x.png" },
+      { "Code": "1", "enUK": "Mainly clear", "daDK": "Mest klart vejr", "Image":"https://openweathermap.org/img/wn/01d@2x.png" },
+      { "Code": "2", "enUK": "Partly cloudy", "daDK": "Delvist overskyet vejr", "Image":"https://openweathermap.org/img/wn/02d@2x.png" },
+      { "Code": "3", "enUK": "Overcast", "daDK": "Overskyet", "Image":"https://openweathermap.org/img/wn/03d@2x.png" },
+      { "Code": "45", "enUK": "Fog", "daDK": "Tåget", "Image":"https://openweathermap.org/img/wn/50d@2x.png" },
+      { "Code": "48", "enUK": "Depositing rime fog", "daDK": "Rimtåge", "Image":"https://openweathermap.org/img/wn/50d@2x.png" },
+      { "Code": "51", "enUK": "Drizzle: Light", "daDK": "Let støvregn", "Image":"https://openweathermap.org/img/wn/09d@2x.png" },
+      { "Code": "53", "enUK": "Drizzle: Moderate", "daDK": "Moderat støvregn", "Image":"https://openweathermap.org/img/wn/09d@2x.png" },
+      { "Code": "55", "enUK": "Drizzle: Dense intensity", "daDK": "Kraftig støvregn", "Image":"https://openweathermap.org/img/wn/09d@2x.png" },
+      { "Code": "56", "enUK": "Freezing Drizzle: Light", "daDK": "Kold støvregn: Let", "Image":"https://openweathermap.org/img/wn/09d@2x.png" },
+      { "Code": "57", "enUK": "Freezing Drizzle: Dense intensity", "daDK": "Kold støvregn: Kraftig intensitet", "Image":"https://openweathermap.org/img/wn/09d@2x.png" },
+      { "Code": "61", "enUK": "Rain: Slight", "daDK": "Let regn", "Image":"https://openweathermap.org/img/wn/10d@2x.png" },
+      { "Code": "63", "enUK": "Rain: Moderate", "daDK": "Moderat regn", "Image":"https://openweathermap.org/img/wn/10d@2x.png" },
+      { "Code": "65", "enUK": "Rain: Heavy intensity", "daDK": "Kraftig regn", "Image":"https://openweathermap.org/img/wn/10d@2x.png" },
+      { "Code": "66", "enUK": "Freezing Rain: Light", "daDK": "Let men kold regn", "Image":"https://openweathermap.org/img/wn/10d@2x.png" },
+      { "Code": "67", "enUK": "Freezing Rain: Heavy intensity", "daDK": "Kraftig kold regn", "Image":"https://openweathermap.org/img/wn/10d@2x.png" },
+      { "Code": "71", "enUK": "Snow fall: Slight", "daDK": "Let snefald", "Image":"https://openweathermap.org/img/wn/13d@2x.png" },
+      { "Code": "73", "enUK": "Snow fall: Moderate", "daDK": "Moderat snefald", "Image":"https://openweathermap.org/img/wn/13d@2x.png" },
+      { "Code": "75", "enUK": "Snow fall: Heavy intensity", "daDK": "Kraftig snefald", "Image":"https://openweathermap.org/img/wn/13d@2x.png" },
+      { "Code": "77", "enUK": "Snow grains", "daDK": "Snefnug", "Image":"https://openweathermap.org/img/wn/13d@2x.png" },
+      { "Code": "80", "enUK": "Rain showers: Slight", "daDK": "Lette regnbyger", "Image":"https://openweathermap.org/img/wn/09d@2x.png" },
+      { "Code": "81", "enUK": "Rain showers: Moderate", "daDK": "Moderate regnbyger", "Image":"https://openweathermap.org/img/wn/09d@2x.png" },
+      { "Code": "82", "enUK": "Rain showers: Violent", "daDK": "Kraftige regnbyger", "Image":"https://openweathermap.org/img/wn/09d@2x.png" },
+      { "Code": "85", "enUK": "Snow showers: Slight", "daDK": "Lette snebyger", "Image":"https://openweathermap.org/img/wn/13d@2x.png" },
+      { "Code": "86", "enUK": "Snow showers: Heavy", "daDK": "Kraftige snebyger", "Image":"https://openweathermap.org/img/wn/13d@2x.png" },
+      { "Code": "95", "enUK": "Thunderstorm: Slight or moderate", "daDK": "Let eller moderat tordenvejr", "Image":"https://openweathermap.org/img/wn/11d@2x.png" },
+      { "Code": "96", "enUK": "Thunderstorm with slight hail", "daDK": "Tordenvejr med let hagl", "Image":"https://openweathermap.org/img/wn/11d@2x.png" },
+      { "Code": "99", "enUK": "Thunderstorm with heavy hail", "daDK": "Tordenvejr med kraftig hagl", "Image":"https://openweathermap.org/img/wn/11d@2x.png" }
     ]
   };
   var WeatherCodePhrase = Codes.WMOCodes.find((item) => item.Code = stringCode);

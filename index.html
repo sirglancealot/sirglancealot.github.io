@@ -10,18 +10,31 @@
     <div class="table-container">
     <table class="table">
         <tr>
-            <th class="weatherheader" colspan="2">Vejret nu</th>
+            <th class="weatherheader" colspan="4">Vejret nu</th>
         </tr>
         <tr>
-            <td class="weather" width="20%" rowspan="2"><img class="weathericon" id="WebCurrentWeatherIcon" src="..."></img></td>
-            <td class="weather" width="80%" rowspan="1"><p class="weather" id="WebCurrentWeather" onload="forecastData()"></p></td>
-            <td class="weather" width="80%" rowspan="1"><p class="weather" id="WebCurrentWeather" onload="forecastData()"></p></td>
+            <td class="weather" rowspan="2" colspan="1"><img class="weathericon" id="WebCurrentWeatherIcon" src="..."></img></td>
+            <td class="weather" rowspan="1" colspan="3"><p class="weather" id="WebCurrentWeather" onload="forecastData()"></p></td>
+            <td class="weather" rowspan="1" colspan="3"><p class="weather" id="WebCurrentWeather" onload="forecastData()"></p></td>
         </tr>
         <tr>
-            <th class="weatherheader" colspan="2">Forventede temperaturer i dag</th>
+            <th class="weatherheader" colspan="1">Føles som</th>
+            <th class="weatherheader" colspan="1">Vind</th>
+            <th class="weatherheader" colspan="1">Fugtighed</th>
+            <th class="weatherheader" colspan="1">Regn</th>
+
         </tr>
         <tr>
-            <td class="weather" colspan="2"><p id="MinToMaxTemp" onload="forecastData()"></p></td>
+            <td class="weather" colspan="1"><p id="WebCurrentApparentTemperature" onload="forecastData()"></p></td>
+            <td class="weather" colspan="1"><p id="WebCurrentWindSpeed" onload="forecastData()"></p></td>
+            <td class="weather" colspan="1"><p id="WebCurrentHumidity" onload="forecastData()"></p></td>
+            <td class="weather" colspan="1"><p id="WebCurrentRain" onload="forecastData()"></p></td>
+        </tr>
+        <tr>
+            <th class="weatherheader" colspan="4">Forventede temperaturer i dag</th>
+        </tr>
+        <tr>
+            <td class="weather" colspan="4"><p id="MinToMaxTemp" onload="forecastData()"></p></td>
         </tr>
     </table>
     </div>
