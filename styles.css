@@ -44,6 +44,7 @@ table {
     text-align: center;
     width: 200px;
     position: center;
+    border: 0px;
     /* white-space: nowrap; */
 }
 
