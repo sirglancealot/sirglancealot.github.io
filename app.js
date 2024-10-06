@@ -115,7 +115,7 @@ function forecastData() {
     document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
     //document.getElementById("NextCurrentTemp").textContent = NextCurrentTemp;
     document.getElementById("WebCurrentWeather").textContent = WebCurrentWeather;
-    document.getElementById("WebCurrentWeatherIcon").innerHTML = WebCurrentWeatherIcon; 
+    document.getElementById("WebCurrentWeatherIcon").src = WebCurrentWeatherIcon; 
     // Set update freq
     setTimeout(forecastData, 1800000); // 30 minutes
   }
