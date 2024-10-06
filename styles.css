@@ -43,6 +43,7 @@ table {
     font-family: 'Ubuntu Condenced',sans-serif;
     text-align: center;
     width: 200px;
+    white-space: nowrap;
 }
 
 .weatherheader {
