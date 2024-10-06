@@ -92,21 +92,22 @@ function forecastData() {
       minutelyIsDay
     );
 
+    var CurrentWeatherArray = [];
     CurrentWeatherArray = GetForecastDataArray(
       CurrentDataTime,
       CurrentDataTemp
     );
 
+    // Setting final variables for web, for current data
     var WebCurrentData = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour);
     var WebCurrentTemp = WebCurrentData.Temperature + " " + MinutelyUnits.temperature_2m;
-    var WebCurrentHumidity = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour).Humidity + " " + MinutelyUnits.relative_humidity_2m;
-    var WebCurrentApparentTemperature = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour).ApparentTemperature + " " + MinutelyUnits.apparent_temperature;
-    var WebCurrentRain = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour).Rain + " " + MinutelyUnits.rain;
-    var WebCurrentSnowfall = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour).Snowfall + " " + MinutelyUnits.snowfall;
-    var WebCurrentWindSpeed = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour).WindSpeed + " " + MinutelyUnits.wind_speed_10m;
+    var WebCurrentHumidity = WebCurrentData.Humidity + " " + MinutelyUnits.relative_humidity_2m;
+    var WebCurrentApparentTemperature = WebCurrentData.ApparentTemperature + " " + MinutelyUnits.apparent_temperature;
+    var WebCurrentRain = WebCurrentData.Rain + " " + MinutelyUnits.rain;
+    var WebCurrentSnowfall = WebCurrentData.Snowfall + " " + MinutelyUnits.snowfall;
+    var WebCurrentWindSpeed = WebCurrentData.WindSpeed + " " + MinutelyUnits.wind_speed_10m;
     var WebCurrentWeather = GetNextForecastItem(MinutelyWeatherArr,ActualCurrentQuarterHour).WeatherCode +' og '+ WebCurrentTemp;
-    // Getting forecast and current weather data
-    var CurrentWeatherArray = [];
+
     var WebCurrentWeatherIcon = GetNextForecastItem(MinutelyWeatherArr,ActualCurrentQuarterHour).Image;
     // Mapping values to elementss
 
