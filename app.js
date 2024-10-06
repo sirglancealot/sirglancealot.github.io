@@ -113,7 +113,7 @@ function forecastData() {
     //document.getElementById("MaxTemp").textContent = MaxTemp;
     //document.getElementById("MinTemp").textContent = MinTemp;
     document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
-    document.getElementById("NextCurrentTemp").textContent = NextCurrentTemp;
+    //document.getElementById("NextCurrentTemp").textContent = NextCurrentTemp;
     document.getElementById("WebCurrentWeather").textContent = WebCurrentWeather;
 
     // Set update freq
