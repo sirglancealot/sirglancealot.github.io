@@ -29,14 +29,18 @@
             <td class="weather" colspan="1"><p id="WebCurrentHumidity" onload="forecastData()"></p></td>
             <td class="weather" colspan="1"><p id="WebCurrentRain" onload="forecastData()"></p></td>
         </tr>
-        <tr>
-            <th class="weatherheader" colspan="4">Forventede temperaturer i dag</th>
-        </tr>
-        <tr>
-            <td class="weather" colspan="4"><p id="MinToMaxTemp" onload="forecastData()"></p></td>
-        </tr>
     </table>
     </div>
+    <div class="table-container">
+        <table class="table">
+            <tr>
+                <th class="weatherheader" colspan="4">Dagens vejrudsigt</th>
+            </tr>
+            <tr>
+                <td class="weather" colspan="4"><p id="MinToMaxTemp" onload="forecastData()"></p></td>
+            </tr>
+        </table>
+        </div>
     <script src="app.js"></script>
 </body>
 </html>
