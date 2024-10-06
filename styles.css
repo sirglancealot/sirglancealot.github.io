@@ -42,7 +42,7 @@ table {
     font-size: 30px;
     font-family: 'Ubuntu Condenced',sans-serif;
     text-align: center;
-    width: 200px;
+    /*width: 200px;*/
     position: center;
     /* white-space: nowrap; */
 }
