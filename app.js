@@ -96,7 +96,9 @@ function forecastData() {
       CurrentDataTime,
       CurrentDataTemp
     );
-    var WebCurrentTemp = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour).Temperature + " " + MinutelyUnits.temperature_2m;
+
+    var WebCurrentData = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour);
+    var WebCurrentTemp = WebCurrentData.Temperature + " " + MinutelyUnits.temperature_2m;
     var WebCurrentHumidity = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour).Humidity + " " + MinutelyUnits.relative_humidity_2m;
     var WebCurrentApparentTemperature = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour).ApparentTemperature + " " + MinutelyUnits.apparent_temperature;
     var WebCurrentRain = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour).Rain + " " + MinutelyUnits.rain;
