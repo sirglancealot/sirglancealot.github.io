@@ -108,7 +108,7 @@ function forecastData() {
     var WebCurrentWindSpeed = WebCurrentData.WindSpeed + " " + MinutelyUnits.wind_speed_10m;
     var WebCurrentWeather = GetWMOCodes(WebCurrentData.WeatherCode).daDK +' og '+ WebCurrentTemp;
 
-    var WebCurrentWeatherIcon = WebCurrentData.Image;
+    var WebCurrentWeatherIcon = GetWMOCodes(WebCurrentData.WeatherCode).Image;
     WebCurrentData
     console.log(WebCurrentWeatherIcon);
 
