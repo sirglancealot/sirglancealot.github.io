@@ -99,7 +99,7 @@ function forecastData() {
     );
 
     // Setting final variables for web, for current data
-    var WebCurrentData = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour);
+    var WebCurrentData = GetNextForecastItem(MinutelyWeatherArr, ActualCurrentQuarterHour);
     var WebCurrentTemp = WebCurrentData.Temperature + " " + MinutelyUnits.temperature_2m;
     var WebCurrentHumidity = WebCurrentData.Humidity + " " + MinutelyUnits.relative_humidity_2m;
     var WebCurrentApparentTemperature = WebCurrentData.ApparentTemperature + " " + MinutelyUnits.apparent_temperature;
