@@ -106,12 +106,13 @@ function forecastData() {
     var WebCurrentRain = WebCurrentData.Rain + " " + MinutelyUnits.rain;
     var WebCurrentSnowfall = WebCurrentData.Snowfall + " " + MinutelyUnits.snowfall;
     var WebCurrentWindSpeed = WebCurrentData.WindSpeed + " " + MinutelyUnits.wind_speed_10m;
-    var WebCurrentWeather = GetNextForecastItem(MinutelyWeatherArr,ActualCurrentQuarterHour).WeatherCode +' og '+ WebCurrentTemp;
+    var WebCurrentWeather = GetWMOCodes(WebCurrentData.WeatherCode).daDK +' og '+ WebCurrentTemp;
 
-    var WebCurrentWeatherIcon = GetNextForecastItem(MinutelyWeatherArr,ActualCurrentQuarterHour).Image;
+    var WebCurrentWeatherIcon = WebCurrentData.Image;
+    WebCurrentData
     console.log(WebCurrentWeatherIcon);
-    // Mapping values to elementss
 
+    // Mapping values to elements
     document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
     //document.getElementById("WebCurrentTemp").textContent = WebCurrentTemp;
     //document.getElementById("WebCurrentSnowfall").textContent = WebCurrentSnowfall;
@@ -287,6 +288,6 @@ function GetWMOCodes(WeatherCode) {
       { "Code": "99", "enUK": "Thunderstorm with heavy hail", "daDK": "Tordenvejr med kraftig hagl", "Image":"https://openweathermap.org/img/wn/11d@2x.png" }
     ]
   };
-  var WeatherCodePhrase = Codes.WMOCodes.find((item) => item.Code = stringCode);
-  return WeatherCodePhrase.daDK;
+  var WeatherCodeObj = Codes.WMOCodes.find((item) => item.Code = stringCode);
+  return WeatherCodeObj;
 }
