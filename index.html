@@ -13,14 +13,15 @@
             <th class="weatherheader" colspan="2">Vejret nu</th>
         </tr>
         <tr>
-            <td class="weather" width="30%"><img class="weathericon" id="WebCurrentWeatherIcon" src="..."></img></td>
-            <td class="weather" width="70%"><p class="weather" id="WebCurrentWeather" onload="forecastData()"></p></td>
+            <td class="weather" width="20%" rowspan="2"><img class="weathericon" id="WebCurrentWeatherIcon" src="..."></img></td>
+            <td class="weather" width="80%" rowspan="1"><p class="weather" id="WebCurrentWeather" onload="forecastData()"></p></td>
+            <td class="weather" width="80%" rowspan="1"><p class="weather" id="WebCurrentWeather" onload="forecastData()"></p></td>
         </tr>
         <tr>
-            <th class="weatherheader">Forventede temperaturer i dag</th>
+            <th class="weatherheader" colspan="2">Forventede temperaturer i dag</th>
         </tr>
         <tr>
-            <td class="weather"><p id="MinToMaxTemp" onload="forecastData()"></p></td>
+            <td class="weather" colspan="2"><p id="MinToMaxTemp" onload="forecastData()"></p></td>
         </tr>
     </table>
     </div>
