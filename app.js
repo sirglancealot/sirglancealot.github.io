@@ -93,12 +93,6 @@ function forecastData() {
       minutelyLightningPotential,
       minutelyIsDay
     );
-    var WebWeatherCode = GetNextForecastItem(
-      MinutelyWeatherArr,
-      ActualCurrentQuarterHour
-    ).WeatherCode;
-    // Getting forecast and current weather data
-    var CurrentWeatherArray = [];
 
     CurrentWeatherArray = GetForecastDataArray(
       CurrentDataTime,
@@ -110,12 +104,16 @@ function forecastData() {
       " " +
       MinutelyUnits.temperature_2m;
 
+    var WebCurrentWeather = GetNextForecastItem(MinutelyWeatherArr,ActualCurrentQuarterHour).WeatherCode +' og '+ NextCurrentTemp;
+    // Getting forecast and current weather data
+    var CurrentWeatherArray = [];
+
     // Mapping values to elementss
     //document.getElementById("MaxTemp").textContent = MaxTemp;
     //document.getElementById("MinTemp").textContent = MinTemp;
     document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
     document.getElementById("NextCurrentTemp").textContent = NextCurrentTemp;
-    document.getElementById("WebWeatherCode").textContent = WebWeatherCode;
+    document.getElementById("WebCurrentWeather").textContent = WebCurrentWeather;
 
     // Set update freq
     setTimeout(forecastData, 1800000); // 30 minutes
@@ -284,6 +282,5 @@ function GetWMOCodes(WeatherCode) {
     ]
   };
   var WeatherCodePhrase = Codes.WMOCodes.find((item) => item.Code = stringCode);
-  console.log('WeatherCode: '+stringCode + ' Weathercodeitem phrase: '+ WeatherCodePhrase.daDK);
   return WeatherCodePhrase.daDK;
 }
