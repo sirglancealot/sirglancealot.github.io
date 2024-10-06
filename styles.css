@@ -44,7 +44,7 @@ table {
     text-align: center;
     width: 200px;
     position: center;
-    white-space: nowrap;
+    /* white-space: nowrap; */
 }
 
 .weatherheader {
