@@ -44,7 +44,6 @@ table {
     text-align: center;
     width: 200px;
     position: center;
-    border: 0px;
     /* white-space: nowrap; */
 }
 
@@ -54,7 +53,6 @@ table {
     font-family: 'Ubuntu Condenced',sans-serif;
     text-align: center;
     width: 200px;
-    border: 0px;
 }
 
 .weathericon {
