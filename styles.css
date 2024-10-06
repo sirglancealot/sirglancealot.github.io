@@ -53,9 +53,10 @@ table {
     font-family: 'Ubuntu Condenced',sans-serif;
     text-align: center;
     width: 200px;
+    border: 0px;
 }
 
 .weathericon {
-    max-width: 32px;
+    max-width: 60px;
     height: auto;
   }
