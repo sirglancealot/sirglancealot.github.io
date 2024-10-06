@@ -102,7 +102,7 @@ function forecastData() {
     var WebCurrentRain = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour).Rain + " " + MinutelyUnits.rain;
     var WebCurrentSnowfall = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour).Snowfall + " " + MinutelyUnits.snowfall;
     var WebCurrentWindSpeed = GetNextForecastItem(CurrentWeatherArray, ActualCurrentQuarterHour).WindSpeed + " " + MinutelyUnits.wind_speed_10m;
-    var WebCurrentWeather = GetNextForecastItem(MinutelyWeatherArr,ActualCurrentQuarterHour).WeatherCode +' og '+ NextCurrentTemp;
+    var WebCurrentWeather = GetNextForecastItem(MinutelyWeatherArr,ActualCurrentQuarterHour).WeatherCode +' og '+ WebCurrentTemp;
     // Getting forecast and current weather data
     var CurrentWeatherArray = [];
     var WebCurrentWeatherIcon = GetNextForecastItem(MinutelyWeatherArr,ActualCurrentQuarterHour).Image;
