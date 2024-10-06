@@ -109,6 +109,7 @@ function forecastData() {
     var WebCurrentWeather = GetNextForecastItem(MinutelyWeatherArr,ActualCurrentQuarterHour).WeatherCode +' og '+ WebCurrentTemp;
 
     var WebCurrentWeatherIcon = GetNextForecastItem(MinutelyWeatherArr,ActualCurrentQuarterHour).Image;
+    console.log(WebCurrentWeatherIcon);
     // Mapping values to elementss
 
     document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
