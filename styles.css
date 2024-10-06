@@ -47,13 +47,6 @@ table {
     white-space: nowrap;
 }
 
-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-  }
-  
 .weatherheader {
     color: #616161;
     font-size: 10px;
