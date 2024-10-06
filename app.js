@@ -108,14 +108,14 @@ function forecastData() {
     var WebCurrentWeather = GetNextForecastItem(MinutelyWeatherArr,ActualCurrentQuarterHour).WeatherCode +' og '+ NextCurrentTemp;
     // Getting forecast and current weather data
     var CurrentWeatherArray = [];
-
+    var WebCurrentWeatherIcon = 'http://openweathermap.org/img/wn/01d@2x.png';
     // Mapping values to elementss
     //document.getElementById("MaxTemp").textContent = MaxTemp;
     //document.getElementById("MinTemp").textContent = MinTemp;
     document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
     //document.getElementById("NextCurrentTemp").textContent = NextCurrentTemp;
     document.getElementById("WebCurrentWeather").textContent = WebCurrentWeather;
-
+    document.getElementById("WebCurrentWeatherIcon").innerHTML = WebCurrentWeatherIcon; 
     // Set update freq
     setTimeout(forecastData, 1800000); // 30 minutes
   }
