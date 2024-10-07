@@ -3,7 +3,7 @@ body {
 }
 
 table {
-    background-color: #ff5733; /* Light grey background for the table */
+    background-color: #e8e8e8; /* Light grey background for the table */
     margin-left: auto; /* Centers the table horizontally */
     margin-right: auto; /* Centers the table horizontally */
     width: 80%; /* Sets the table width to 80% of its container */
@@ -25,14 +25,14 @@ table {
 
 .clock {
     text-align: center; /* Centers the text horizontally */
-    color: #007bff; /* Sets the text color to bright blue */
+    color: #616161; /* Sets the text color to bright blue */
     font-size: 150px; /* Sets the font size to 150 pixels */
     font-family: 'Ubuntu Condensed', sans-serif; /* Sets the font family */
 }
 
 .clock-session {
     text-align: center; /* Centers the text horizontally */
-    color: #007bff; /* Sets the text color to bright blue */
+    color: #616161; /* Sets the text color to bright blue */
     font-size: 25px; /* Sets the font size to 25 pixels */
     font-family: 'Ubuntu Condensed', sans-serif; /* Sets the font family */
 }
@@ -43,7 +43,7 @@ table {
 }
 
 .weather {
-    color: #28a745; /* Sets the text color to bright green */
+    color: #616161; /* Sets the text color to bright green */
     font-size: 25px; /* Sets the font size to 25 pixels */
     font-family: 'Ubuntu Condensed', sans-serif; /* Sets the font family */
     text-align: center; /* Centers the text horizontally */
@@ -53,7 +53,7 @@ table {
 }
 
 .weatherheader {
-    color: #28a745; /* Sets the text color to bright green */
+    color: #616161; /* Sets the text color to bright green */
     font-size: 10px; /* Sets the font size to 10 pixels */
     font-family: 'Ubuntu Condensed', sans-serif; /* Sets the font family */
     text-align: center; /* Centers the text horizontally */
