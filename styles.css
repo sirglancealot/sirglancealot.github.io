@@ -47,7 +47,7 @@ table {
     font-size: 20px; /* Sets the font size to 25 pixels */
     font-family: 'Ubuntu Condensed', sans-serif; /* Sets the font family */
     text-align: center; /* Centers the text horizontally */
-    width: 200px; /* Sets the width to 250 pixels */
+    /* width: 200px; Sets the width to 250 pixels */
     position: center; /* Centers the element */
     /* white-space: nowrap; */ /* Prevents text from wrapping to the next line (commented out) */
     border-collapse: collapse; /* Removes the space between table cells */
@@ -58,7 +58,7 @@ table {
     font-size: 10px; /* Sets the font size to 10 pixels */
     font-family: 'Ubuntu Condensed', sans-serif; /* Sets the font family */
     text-align: center; /* Centers the text horizontally */
-    width: 200px; /* Sets the width to 250 pixels */
+    /* width: 200px; Sets the width to 250 pixels */
     border-collapse: collapse; /* Removes the space between table cells */
 }
 
