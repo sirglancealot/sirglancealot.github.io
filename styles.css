@@ -64,6 +64,7 @@ table {
 .weather-container {
     text-align: center; /* Centers the text horizontally */
     white-space: nowrap; /* Prevents text from wrapping to the next line */
+    vertical-align: middle;
 }
 
 .weathericon {
