@@ -3,7 +3,7 @@ body {
 }
 
 table {
-    background-color: #e8e8e8; /* Light grey background for the table */
+    background-color: #ff5733; /* Light grey background for the table */
     margin-left: auto; /* Centers the table horizontally */
     margin-right: auto; /* Centers the table horizontally */
     width: 80%; /* Sets the table width to 80% of its container */
