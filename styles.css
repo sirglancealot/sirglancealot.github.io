@@ -63,6 +63,6 @@ table {
 }
 
 .weathericon {
-    max-width: 60px; /* Sets the maximum width to 60 pixels */
+    max-width: 100px; /* Sets the maximum width in pixels */
     height: auto; /* Maintains the aspect ratio */
 }
