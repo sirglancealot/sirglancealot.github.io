@@ -51,6 +51,7 @@ table {
     position: center; /* Centers the element */
     /* white-space: nowrap; */ /* Prevents text from wrapping to the next line (commented out) */
     border-collapse: collapse; /* Removes the space between table cells */
+    vertical-align: middle; /* Vertical align text to the middle of a cell  */
 }
 
 .weatherheader {
