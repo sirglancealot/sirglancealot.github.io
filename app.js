@@ -101,7 +101,7 @@ function forecastData() {
 
     // Setting final variables for web, for current data
     var WebCurrentData = GetNextForecastMinutelyItem(MinutelyWeatherArr, ActualCurrentQuarterHour);
-    console.log('Time: '+WebCurrentData.Hour+' \n Temperature: '+WebCurrentData.Temperature+' \n Humidity: '+WebCurrentData.Humidity+' \n ApparentTemperature: '+WebCurrentData.ApparentTemperature+' \n Rain: '+WebCurrentData.Rain+' \n Snowfall: '+WebCurrentData.Snowfall+' \n WeatherCode: '+WebCurrentData.WeatherCode+' \n WindSpeed: '+WebCurrentData.WindSpeed+' \n LightningPotential: '+WebCurrentData.LightningPotential+' \n IsDay: '+WebCurrentData.IsDay);
+    console.log('Time: '+WebCurrentData.Hour+' \n Temperature: '+WebCurrentData.Temperature+' \n Humidity: '+WebCurrentData.Humidity+' \n ApparentTemperature: '+WebCurrentData.ApparentTemperature+' \n Rain: '+WebCurrentData.Rain+' \n Snowfall: '+WebCurrentData.Snowfall+' \n WeatherCode: '+WebCurrentData.WeatherCode.Code+' \n WindSpeed: '+WebCurrentData.WindSpeed+' \n LightningPotential: '+WebCurrentData.LightningPotential+' \n IsDay: '+WebCurrentData.IsDay);
 
     var WebCurrentTemp = WebCurrentData.Temperature + " " + MinutelyUnits.temperature_2m;
     var WebCurrentHumidity = WebCurrentData.Humidity + " " + MinutelyUnits.relative_humidity_2m;
