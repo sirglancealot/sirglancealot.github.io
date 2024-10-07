@@ -3,17 +3,17 @@ body {
 }
 
 table {
-    background-color: #e8e8e8; /* Light grey background for the table */
+    background-color: #46382a1c; /* Light grey background for the table */
     margin-left: auto; /* Centers the table horizontally */
     margin-right: auto; /* Centers the table horizontally */
-    width: 80%; /* Sets the table width to 80% of its container */
+    width: 90%; /* Sets the table width to 90% of its container */
     max-width: calc(100% - 40px); /* Ensures the table doesn't exceed the container width */
     padding: 10px; /* Adds padding inside the table */
     border-collapse: separate; /* Ensures padding works inside the table */
-    border-spacing: 10px; /* Adds space between table cells */
+    border-spacing: 0px; /* Adds space between table cells */
     border-radius: 15px; /* Rounds the corners of the table */
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5); /* Adds a subtle shadow around the table */
-    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+    box-sizing: border-box /* Includes padding and border in the element's total width and height */
 }
 
 .table-container {
