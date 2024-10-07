@@ -22,9 +22,10 @@ function showTime() {
   s = s < 10 ? "0" + s : s;
 
   //var time = h + ":" + m + ":" + s + " " + session;
-  var time = h + ":" + m + " " + session;
+  var time = h + ":" + m;
   document.getElementById("MyClock").innerText = time;
   document.getElementById("MyClock").textContent = time;
+  document.getElementById("MyClockSession").textContent = session;
 
   setTimeout(showTime, 1000);
 }
