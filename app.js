@@ -101,6 +101,8 @@ function forecastData() {
 
     // Setting final variables for web, for current data
     var WebCurrentData = GetNextForecastItem(MinutelyWeatherArr, ActualCurrentQuarterHour);
+    console.log(WebCurrentData.Time+' \n'+WebCurrentData.Temperature+' \n'+WebCurrentData.Humidity+' \n'+WebCurrentData.ApparentTemperature+' \n'+WebCurrentData.Rain+' \n'+WebCurrentData.Snowfall+' \n'+WebCurrentData.WeatherCode+' \n'+WebCurrentData.WindSpeed+' \n'+WebCurrentData.LightningPotential+' \n'+WebCurrentData.IsDay);
+
     var WebCurrentTemp = WebCurrentData.Temperature + " " + MinutelyUnits.temperature_2m;
     var WebCurrentHumidity = WebCurrentData.Humidity + " " + MinutelyUnits.relative_humidity_2m;
     var WebCurrentApparentTemperature = WebCurrentData.ApparentTemperature + " " + MinutelyUnits.apparent_temperature;
