@@ -51,7 +51,6 @@ table {
     position: center; /* Centers the element */
     /* white-space: nowrap; */ /* Prevents text from wrapping to the next line (commented out) */
     border-collapse: collapse; /* Removes the space between table cells */
-    vertical-align: middle; /* Vertical align text to the middle of a cell  */
 }
 
 .weatherheader {
@@ -61,6 +60,12 @@ table {
     text-align: center; /* Centers the text horizontally */
     width: 200px; /* Sets the width to 250 pixels */
     border-collapse: collapse; /* Removes the space between table cells */
+}
+
+.weather-container {
+    text-align: center; /* Centers the text horizontally */
+    white-space: nowrap; /* Prevents text from wrapping to the next line */
+    vertical-align: middle; /* Vertical align text to the middle of a cell  */
 }
 
 .weathericon {
