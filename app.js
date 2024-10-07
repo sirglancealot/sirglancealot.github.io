@@ -100,7 +100,7 @@ function forecastData() {
     );
 
     // Setting final variables for web, for current data
-    var WebCurrentData = GetNextForecastItem(MinutelyWeatherArr, ActualCurrentQuarterHour);
+    var WebCurrentData = GetNextForecastMinutelyItem(MinutelyWeatherArr, ActualCurrentQuarterHour);
     console.log('Time: '+WebCurrentData.Hour+' \n Temperature: '+WebCurrentData.Temperature+' \n Humidity: '+WebCurrentData.Humidity+' \n ApparentTemperature: '+WebCurrentData.ApparentTemperature+' \n Rain: '+WebCurrentData.Rain+' \n Snowfall: '+WebCurrentData.Snowfall+' \n WeatherCode: '+WebCurrentData.WeatherCode+' \n WindSpeed: '+WebCurrentData.WindSpeed+' \n LightningPotential: '+WebCurrentData.LightningPotential+' \n IsDay: '+WebCurrentData.IsDay);
 
     var WebCurrentTemp = WebCurrentData.Temperature + " " + MinutelyUnits.temperature_2m;
@@ -179,6 +179,13 @@ function GetMinutelyWeatherIntoArray(
 function GetNextForecastItem(ForecastArr, Timeslot) {
   var CurrentHour = GetCurrentHour();
   var CurrentData = ForecastArr.find((item) => item.Hour == CurrentHour);
+  return CurrentData;
+}
+
+// Get an object in an array, defined by a timeslot
+function GetNextForecastMinutelyItem(ForecastArr, Timeslot) {
+  var CurrentQuarter = GetCurrentQuarterHour();
+  var CurrentData = ForecastArr.find((item) => item.Hour == CurrentQuarter);
   return CurrentData;
 }
 
