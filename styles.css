@@ -14,6 +14,7 @@ table {
     border-radius: 15px; /* Rounds the corners of the table */
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5); /* Adds a subtle shadow around the table */
     box-sizing: border-box /* Includes padding and border in the element's total width and height */
+    table-layout: fixed;
 }
 
 .table-container {
@@ -64,10 +65,14 @@ table {
 .weather-container {
     text-align: center; /* Centers the text horizontally */
     white-space: nowrap; /* Prevents text from wrapping to the next line */
-    vertical-align: middle;
 }
 
 .weathericon {
-    max-width: 100px; /* Sets the maximum width in pixels */
-    height: auto; /* Maintains the aspect ratio */
+    display: inline-block;
+    vertical-align: middle;
+    color: #616161; /* Sets the text color to bright green */
+    font-size: 20px; /* Sets the font size to 25 pixels */
+    font-family: 'Ubuntu Condensed', sans-serif; /* Sets the font family */
+    text-align: center; /* Centers the text horizontally */
+    vertical-align: middle;
 }
