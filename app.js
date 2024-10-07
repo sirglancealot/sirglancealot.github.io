@@ -105,7 +105,7 @@ function forecastData() {
     var WebCurrentApparentTemperature = WebCurrentData.ApparentTemperature + " " + MinutelyUnits.apparent_temperature;
     var WebCurrentRain = WebCurrentData.Rain + " " + MinutelyUnits.rain;
     var WebCurrentSnowfall = WebCurrentData.Snowfall + " " + MinutelyUnits.snowfall;
-    var WebCurrentWindSpeed = WebCurrentData.WindSpeed + " " + MinutelyUnits.wind_speed_10m;
+    var WebCurrentWindSpeed = getWindDescription(WebCurrentData.WindSpeed) +' ('+WebCurrentData.WindSpeed + " " + MinutelyUnits.wind_speed_10m+ ')';
     var WebCurrentWeather = GetWMOCodes(WebCurrentData.WeatherCode).daDK +' og '+ WebCurrentTemp;
 
     var WebCurrentWeatherIcon = GetWMOCodes(WebCurrentData.WeatherCode).Image;
@@ -290,4 +290,20 @@ function GetWMOCodes(WeatherCode) {
   };
   var WeatherCodeObj = Codes.WMOCodes.find((item) => item.Code = stringCode);
   return WeatherCodeObj;
+}
+
+function getWindDescription(speed) {
+    if (speed > 117) return { daDK: "Orkan", enUK: "Hurricane" };
+    if (speed >= 103 && speed <= 117) return { daDK: "Stærk storm", enUK: "Strong storm" };
+    if (speed >= 89 && speed <= 102) return { daDK: "Storm", enUK: "Storm" };
+    if (speed >= 75 && speed <= 88) return { daDK: "Stormende kuling", enUK: "Stormy gale" };
+    if (speed >= 62 && speed <= 74) return { daDK: "Hård kuling", enUK: "Strong gale" };
+    if (speed >= 50 && speed <= 61) return { daDK: "Stiv kuling", enUK: "Stiff gale" };
+    if (speed >= 39 && speed <= 49) return { daDK: "Hård vind", enUK: "Strong wind" };
+    if (speed >= 29 && speed <= 38) return { daDK: "Frisk vind", enUK: "Fresh wind" };
+    if (speed >= 20 && speed <= 28) return { daDK: "Jævn vind", enUK: "Steady wind" };
+    if (speed >= 12 && speed <= 19) return { daDK: "Let vind", enUK: "Gentle breeze" };
+    if (speed >= 6 && speed <= 11) return { daDK: "Svag vind", enUK: "Light breeze" };
+    if (speed >= 1 && speed <= 5) return { daDK: "Næsten stille", enUK: "Almost silent" };
+    return { daDK: "Stille", enUK: "Quiet" };
 }
