@@ -42,7 +42,7 @@ table {
     font-size: 25px;
     font-family: 'Ubuntu Condenced',sans-serif;
     text-align: center;
-    /*width: 200px;*/
+    width: 250px;
     position: center;
     /* white-space: nowrap; */
 }
@@ -52,7 +52,7 @@ table {
     font-size: 10px;
     font-family: 'Ubuntu Condenced',sans-serif;
     text-align: center;
-    /*width: 200px;*/
+    width: 250px;
 }
 
 .weathericon {
