@@ -39,7 +39,7 @@ table {
 
 .weather {
     color: #616161;
-    font-size: 30px;
+    font-size: 25px;
     font-family: 'Ubuntu Condenced',sans-serif;
     text-align: center;
     /*width: 200px;*/
@@ -52,7 +52,7 @@ table {
     font-size: 10px;
     font-family: 'Ubuntu Condenced',sans-serif;
     text-align: center;
-    width: 200px;
+    /*width: 200px;*/
 }
 
 .weathericon {
