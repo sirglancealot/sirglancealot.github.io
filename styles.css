@@ -53,6 +53,7 @@ table {
     border-collapse: collapse; /* Removes the space between table cells */
     padding: 5px; /* Reduces the padding inside each cell */
     margin: 0; /* Ensures no extra margin is added between rows */
+    line-height: 1; /* Aligns row height with font size */
 }
 
 .weatherheader {
@@ -64,6 +65,7 @@ table {
     border-collapse: collapse; /* Removes the space between table cells */
     padding: 5px; /* Reduces the padding inside each cell */
     margin: 0; /* Ensures no extra margin is added between rows */
+    line-height: 1; /* Aligns row height with font size */
 }
 
 .weathericon {
