@@ -109,8 +109,10 @@ function forecastData() {
     var WebCurrentRain = WebCurrentData.Rain + " " + MinutelyUnits.rain;
     var WebCurrentSnowfall = WebCurrentData.Snowfall + " " + MinutelyUnits.snowfall;
     var WebCurrentWindSpeed = getWindDescription(WebCurrentData.WindSpeed).daDK +' ('+WebCurrentData.WindSpeed + " " + MinutelyUnits.wind_speed_10m+ ')';
-    var WebCurrentWeather = GetWMOCodes(WebCurrentData.WeatherCode.Code).daDK +', '+ WebCurrentTemp;
-    var WebCurrentWeatherIcon = GetWMOCodes(WebCurrentData.WeatherCode.Code).Image;
+
+    var CurrentWeatherCodeObj = GetWMOCodes(WebCurrentData.WeatherCode.Code);
+    var WebCurrentWeather = CurrentWeatherCodeObj.daDK +', '+ WebCurrentTemp;
+    var WebCurrentWeatherIcon = CurrentWeatherCodeObj.Image;
 
     // Mapping values to elements
     document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
