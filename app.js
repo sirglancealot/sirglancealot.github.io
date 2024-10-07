@@ -105,7 +105,7 @@ function forecastData() {
     var WebCurrentApparentTemperature = WebCurrentData.ApparentTemperature + " " + MinutelyUnits.apparent_temperature;
     var WebCurrentRain = WebCurrentData.Rain + " " + MinutelyUnits.rain;
     var WebCurrentSnowfall = WebCurrentData.Snowfall + " " + MinutelyUnits.snowfall;
-    var WebCurrentWindSpeed = getWindDescription(WebCurrentData.WindSpeed) +' ('+WebCurrentData.WindSpeed + " " + MinutelyUnits.wind_speed_10m+ ')';
+    var WebCurrentWindSpeed = getWindDescription(WebCurrentData.WindSpeed).daDK +' ('+WebCurrentData.WindSpeed + " " + MinutelyUnits.wind_speed_10m+ ')';
     var WebCurrentWeather = GetWMOCodes(WebCurrentData.WeatherCode).daDK +' og '+ WebCurrentTemp;
 
     var WebCurrentWeatherIcon = GetWMOCodes(WebCurrentData.WeatherCode).Image;
