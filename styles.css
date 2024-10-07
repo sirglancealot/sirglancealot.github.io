@@ -22,7 +22,10 @@ table {
     display: flex; /* Uses flexbox layout */
     justify-content: center; /* Centers the table horizontally within the container */
 }
-
+img, span {
+  display: inline;
+  vertical-align: middle;
+}
 .clock {
     text-align: center; /* Centers the text horizontally */
     color: #616161; /* Sets the text color to bright blue */
