@@ -24,16 +24,16 @@ table {
 }
 
 .clock {
-    /* 
-    position: center;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    letter-spacing: 7px;
-    */
     text-align: center;
     color: #616161;
     font-size: 150px;
+    font-family: 'Ubuntu Condenced',sans-serif;
+}
+
+.clock-session {
+    text-align: center;
+    color: #616161;
+    font-size: 25px;
     font-family: 'Ubuntu Condenced',sans-serif;
 }
 
