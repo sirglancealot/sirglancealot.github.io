@@ -6,11 +6,11 @@ table {
     background-color: #46382a1c; /* Light grey background for the table */
     margin-left: auto; /* Centers the table horizontally */
     margin-right: auto; /* Centers the table horizontally */
-    width: 90%; /* Sets the table width to 90% of its container */
+    width: 80%; /* Sets the table width to 80% of its container */
     max-width: calc(100% - 40px); /* Ensures the table doesn't exceed the container width */
     padding: 10px; /* Adds padding inside the table */
     border-collapse: separate; /* Ensures padding works inside the table */
-    border-spacing: 0px; /* Adds space between table cells */
+    border-spacing: 1px; /* Adds space between table cells */
     border-radius: 15px; /* Rounds the corners of the table */
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5); /* Adds a subtle shadow around the table */
     box-sizing: border-box /* Includes padding and border in the element's total width and height */
@@ -51,9 +51,6 @@ table {
     position: center; /* Centers the element */
     /* white-space: nowrap; */ /* Prevents text from wrapping to the next line (commented out) */
     border-collapse: collapse; /* Removes the space between table cells */
-    padding: 5px; /* Reduces the padding inside each cell */
-    margin: 0; /* Ensures no extra margin is added between rows */
-    line-height: 1; /* Aligns row height with font size */
 }
 
 .weatherheader {
@@ -63,9 +60,6 @@ table {
     text-align: center; /* Centers the text horizontally */
     width: 200px; /* Sets the width to 250 pixels */
     border-collapse: collapse; /* Removes the space between table cells */
-    padding: 5px; /* Reduces the padding inside each cell */
-    margin: 0; /* Ensures no extra margin is added between rows */
-    line-height: 1; /* Aligns row height with font size */
 }
 
 .weathericon {
