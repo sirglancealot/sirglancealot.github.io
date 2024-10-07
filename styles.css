@@ -48,7 +48,6 @@ table {
     font-family: 'Ubuntu Condensed', sans-serif; /* Sets the font family */
     text-align: center; /* Centers the text horizontally */
     /* width: 200px; Sets the width to 250 pixels */
-    position: center; /* Centers the element */
     /* white-space: nowrap; */ /* Prevents text from wrapping to the next line (commented out) */
     border-collapse: collapse; /* Removes the space between table cells */
 }
