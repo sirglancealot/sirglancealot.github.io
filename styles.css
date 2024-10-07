@@ -36,6 +36,10 @@ table {
     font-size: 25px;
     font-family: 'Ubuntu Condenced',sans-serif;
 }
+.clock-container {
+    text-align: center;
+    white-space: nowrap;
+}
 
 .weather {
     color: #616161;
