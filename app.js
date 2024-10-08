@@ -29,7 +29,7 @@ function showTime() {
 
   setTimeout(showTime, 1000);
 }
-forecastData();
+
 function forecastData() {
   var BrowserLatitude;
   var BrowserLongitude;
