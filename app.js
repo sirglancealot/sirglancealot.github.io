@@ -138,21 +138,12 @@ function forecastData() {
 // Getting location from browser - returning a position object (user: position.coords.latitude and position.coords.longitude)
 function getLocation() {
   if (navigator.geolocation) {
-    return navigator.geolocation.watchPosition(showPosition);
+    console.log(navigator.geolocation.watchPosition());
+    return navigator.geolocation.watchPosition();
   } else {
     //x.innerHTML = "Geolocation is not supported by this browser.";
     console.log('Geolocation is not supported by this browser');
   }
-}
-function showPosition(position) {
-  //x.innerHTML = "Latitude: " + position.coords.latitude +
-  //"<br>Longitude: " + position.coords.longitude;
-  console.log('Latitude: ' + position.coords.latitude + ' Longitude: ' + position.coords.longitude);
-  var posObj = {
-    "latitude":position.coords.latitude,
-    "longitude":position.coords.longitude
-  }
-  return position;
 }
 
 // Generate object array combined with a timestamp and a value
