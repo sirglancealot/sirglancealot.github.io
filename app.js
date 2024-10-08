@@ -22,7 +22,7 @@ function showTime() {
   s = s < 10 ? "0" + s : s;
 
   //var time = h + ":" + m + ":" + s + " " + session;
-  var time = leadingZero(h) + ":" + m;
+  var time = RemoveLeadingZero(h) + ":" + m;
   document.getElementById("MyClock").innerText = time;
   document.getElementById("MyClock").textContent = time;
   document.getElementById("MyClockSession").textContent = session;
@@ -241,6 +241,10 @@ function GetCurrentHour() {
     }
     return value.toString();
   }
+}
+
+function RemoveLeadingZero(value) {
+    return value.replace(/^0+(?=\d)/, '');
 }
 
 // Get current hour and quarter in format: 2024-10-04T11:15 (:00, :15, :30, :45)
