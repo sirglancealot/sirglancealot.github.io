@@ -3,7 +3,7 @@ body {
 }
 
 table {
-    background-color: #46382a1c; /* Light grey background for the table */
+    background-color: #66472729; /* Light grey background for the table */
     margin-left: auto; /* Centers the table horizontally */
     margin-right: auto; /* Centers the table horizontally */
     width: 80%; /* Sets the table width to 80% of its container */
@@ -14,7 +14,6 @@ table {
     border-radius: 15px; /* Rounds the corners of the table */
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5); /* Adds a subtle shadow around the table */
     box-sizing: border-box /* Includes padding and border in the element's total width and height */
-    table-layout: fixed;
 }
 
 .table-container {
