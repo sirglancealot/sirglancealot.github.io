@@ -31,11 +31,22 @@ function showTime() {
 }
 
 function forecastData() {
-  GetCoords();
-  //var BrowserPosition = GetCoords();
-  //var BrowserLatitude = BrowserPosition.latitude;
-  //var BrowserLongitude = BrowserPosition.longitude;
+  var BrowserLatitude = BrowserPosition.latitude;
+  var BrowserLongitude = BrowserPosition.longitude;
 
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        // Assign new values of latitude and longitude inside the function
+        BrowserLatitude = position.coords.latitude;
+        BrowserLongitude = position.coords.longitude;
+      });
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
+  }
+
+  console.log(BrowserLatitude);
   //var WeatherEndpoint = "https://api.open-meteo.com/v1/forecast?latitude=" + BrowserLatitude + "&longitude=" + BrowserLongitude + "&minutely_15=temperature_2m,relative_humidity_2m,apparent_temperature,rain,snowfall,weather_code,wind_speed_10m,lightning_potential,is_day&hourly=temperature_2m,rain,cloud_cover,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin&forecast_days=3&models=dmi_seamless";
   //console.log(WeatherEndpoint);
   var NewEndpoint =
@@ -134,27 +145,6 @@ function forecastData() {
     // Set update freq
     setTimeout(forecastData, 1800000); // 30 minutes
   }
-}
-
-// Getting location from browser - returning a position object (user: position.coords.latitude and position.coords.longitude)
-function GetCoords() {
-var options = {
-    "enableHighAccuracy": true,
-    "timeout": 5000,
-    "maximumAge": 0,
-  };
-  
-  function success(pos) {
-    var crd = pos.coords;
-    return crd;
-  }
-  
-  function error(err) {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
-  }
-var coords = navigator.geolocation.getCurrentPosition(success, error, options);
-console.log(coords.longitude);
-//return coords;
 }
 
 // Generate object array combined with a timestamp and a value
