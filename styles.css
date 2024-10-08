@@ -4,7 +4,7 @@ body {
 }
 
 table {
-    min-width: 390px;
+    min-width: 360px;
     background-color: #66472729; /* Light grey background for the table */
     margin-left: auto; /* Centers the table horizontally */
     margin-right: auto; /* Centers the table horizontally */
