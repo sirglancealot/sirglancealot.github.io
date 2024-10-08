@@ -136,7 +136,7 @@ function forecastData() {
 }
 
 // Getting location from browser - returning a position object (user: position.coords.latitude and position.coords.longitude)
-function GetCoords {
+function GetCoords() {
 var options = {
     "enableHighAccuracy": true,
     "timeout": 5000,
