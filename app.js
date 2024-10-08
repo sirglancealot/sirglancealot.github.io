@@ -31,7 +31,7 @@ function showTime() {
 }
 
 function forecastData() {
-  var BrowserPosition = getLocation();
+  var BrowserPosition = GetCoords();
   var BrowserLatitude = BrowserPosition.coords.latitude;
   var BrowserLongitude = BrowserPosition.coords.longitude;
 
@@ -136,14 +136,23 @@ function forecastData() {
 }
 
 // Getting location from browser - returning a position object (user: position.coords.latitude and position.coords.longitude)
-function getLocation() {
-  if (navigator.geolocation) {
-    console.log(navigator.geolocation.watchPosition());
-    return navigator.geolocation.watchPosition();
-  } else {
-    //x.innerHTML = "Geolocation is not supported by this browser.";
-    console.log('Geolocation is not supported by this browser');
+function GetCoords {
+var options = {
+    "enableHighAccuracy": true,
+    "timeout": 5000,
+    "maximumAge": 0,
+  };
+  
+  function success(pos) {
+    var crd = pos.coords;
+    return crd;
   }
+  
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+var coords = navigator.geolocation.getCurrentPosition(success, error, options);
+return coords;
 }
 
 // Generate object array combined with a timestamp and a value
