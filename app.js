@@ -130,7 +130,8 @@ function forecastData() {
       var CurrentWeatherCodeObj = GetWMOCodes(WebCurrentData.WeatherCode.Code);
       var WebCurrentWeather = CurrentWeatherCodeObj.daDK +', '+ WebCurrentTemp;
       var WebCurrentWeatherIcon = CurrentWeatherCodeObj.Image;
-      var WebPosition = 'Browser position, latitude: '+ BrowserLatitude +' longitude: '+BrowserLongitude+' <a href="https://maps.google.com/?q='+BrowserLatitude+','+BrowserLatitude+'">Maps</a>';
+      var WebPosition = 'Browser position, latitude: '+ BrowserLatitude +' longitude: '+BrowserLongitude;
+      var WebPositionLink = 'https://maps.google.com/?q='+BrowserLatitude+','+BrowserLatitude;
       // Mapping values to elements
       document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
       //document.getElementById("WebCurrentTemp").textContent = WebCurrentTemp;
@@ -142,6 +143,7 @@ function forecastData() {
       document.getElementById("WebCurrentWeather").textContent = WebCurrentWeather;
       document.getElementById("WebCurrentWeatherIcon").src = WebCurrentWeatherIcon; 
       document.getElementById("WebPosition").textContent = WebPosition
+      document.getElementById("WebPosition").a = WebPositionLink;
       // Set update freq
       setTimeout(forecastData, 1800000); // 30 minutes
     }
