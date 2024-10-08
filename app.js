@@ -138,7 +138,7 @@ function forecastData() {
 // Getting location from browser - returning a position object (user: position.coords.latitude and position.coords.longitude)
 function getLocation() {
   if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(showPosition);
+    return navigator.geolocation.watchPosition(showPosition);
   } else {
     //x.innerHTML = "Geolocation is not supported by this browser.";
     console.log('Geolocation is not supported by this browser');
@@ -152,7 +152,7 @@ function showPosition(position) {
     "latitude":position.coords.latitude,
     "longitude":position.coords.longitude
   }
-  return JSON.parse(posObj);
+  return position;
 }
 
 // Generate object array combined with a timestamp and a value
