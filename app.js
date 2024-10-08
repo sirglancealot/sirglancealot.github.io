@@ -31,6 +31,7 @@ function showTime() {
 }
 
 function forecastData() {
+  GetCoords();
   //var BrowserPosition = GetCoords();
   //var BrowserLatitude = BrowserPosition.latitude;
   //var BrowserLongitude = BrowserPosition.longitude;
@@ -152,7 +153,8 @@ var options = {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
 var coords = navigator.geolocation.getCurrentPosition(success, error, options);
-return coords;
+console.log(coords.longitude);
+//return coords;
 }
 
 // Generate object array combined with a timestamp and a value
