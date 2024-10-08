@@ -22,7 +22,7 @@ function showTime() {
   s = s < 10 ? "0" + s : s;
 
   //var time = h + ":" + m + ":" + s + " " + session;
-  var time = h + ":" + m;
+  var time = leadingZero(h) + ":" + m;
   document.getElementById("MyClock").innerText = time;
   document.getElementById("MyClock").textContent = time;
   document.getElementById("MyClockSession").textContent = session;
@@ -274,13 +274,12 @@ function GetCurrentQuarterHour() {
     min;
 
   return dateCurrent;
-
+}
   function leadingZero(value) {
     if (value < 10) {
       return "0" + value.toString();
     }
     return value.toString();
-  }
 }
 
 // Setting WMO Weather interpretation codes (WW) for weather code
