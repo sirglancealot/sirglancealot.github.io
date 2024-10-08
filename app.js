@@ -29,6 +29,21 @@ function showTime() {
 
   setTimeout(showTime, 1000);
 }
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(showPosition);
+  } else {
+    //x.innerHTML = "Geolocation is not supported by this browser.";
+    console.log('Geolocation is not supported by this browser');
+  }
+}
+function showPosition(position) {
+  //x.innerHTML = "Latitude: " + position.coords.latitude +
+  //"<br>Longitude: " + position.coords.longitude;
+  consolg.log('Latitude: ' + position.coords.latitude + ' Longitude: ' + position.coords.longitude);
+}
+
 function forecastData() {
   var WeatherEndpoint =
     "https://api.open-meteo.com/v1/forecast?latitude=56.567&longitude=9.0271&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin&forecast_days=1&models=dmi_seamless";
@@ -40,6 +55,7 @@ function forecastData() {
     .catch((error) => console.error("Error:", error));
 
   function weatherData(payload) {
+    getLocation();
     // Setting units for the various groupings: Daily, Hourly, Minutely
     var DailyUnits = payload.daily_units;
     var HourlyUnits = payload.hourly_units;
