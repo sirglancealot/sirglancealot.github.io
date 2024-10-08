@@ -130,7 +130,7 @@ function forecastData() {
       var CurrentWeatherCodeObj = GetWMOCodes(WebCurrentData.WeatherCode.Code);
       var WebCurrentWeather = CurrentWeatherCodeObj.daDK +', '+ WebCurrentTemp;
       var WebCurrentWeatherIcon = CurrentWeatherCodeObj.Image;
-      var WebPosition = 'Browser position, latitude: '+ BrowserLatitude +' longitude: ' + BrowserLongitude;
+      var WebPosition = 'Browser position, latitude: '+ BrowserLatitude +' longitude: '+BrowserLongitude+' <a href="https://maps.google.com/?q='+BrowserLatitude+','+BrowserLatitude+'">Maps</a>';
       // Mapping values to elements
       document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
       //document.getElementById("WebCurrentTemp").textContent = WebCurrentTemp;
