@@ -33,7 +33,7 @@ function showTime() {
 function forecastData() {
   var BrowserLatitude;
   var BrowserLongitude;
-  getLocation().then(console.log(BrowserLatitude));
+  getLocation();//.then(console.log(BrowserLatitude));
   function getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
