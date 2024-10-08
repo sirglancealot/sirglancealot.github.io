@@ -131,7 +131,7 @@ function forecastData() {
       var WebCurrentWeather = CurrentWeatherCodeObj.daDK +', '+ WebCurrentTemp;
       var WebCurrentWeatherIcon = CurrentWeatherCodeObj.Image;
       var WebPosition = 'Browser position, latitude: '+ BrowserLatitude +' longitude: '+BrowserLongitude;
-      var WebPositionLink = 'https://maps.google.com/?q='+BrowserLatitude+','+BrowserLatitude;
+      var WebPositionLink = '<a href="https://maps.google.com/?q='+BrowserLatitude+','+BrowserLatitude+'">Browser position, latitude: '+ BrowserLatitude +' longitude: '+BrowserLongitude+'</a>';
       // Mapping values to elements
       document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
       //document.getElementById("WebCurrentTemp").textContent = WebCurrentTemp;
@@ -142,8 +142,8 @@ function forecastData() {
       document.getElementById("WebCurrentWindSpeed").textContent = WebCurrentWindSpeed;
       document.getElementById("WebCurrentWeather").textContent = WebCurrentWeather;
       document.getElementById("WebCurrentWeatherIcon").src = WebCurrentWeatherIcon; 
-      document.getElementById("WebPosition").textContent = WebPosition
-      document.getElementById("WebPosition").a = WebPositionLink;
+      document.getElementById("WebPositionLink").innerHTML = WebPositionLink
+      
       // Set update freq
       setTimeout(forecastData, 1800000); // 30 minutes
     }
