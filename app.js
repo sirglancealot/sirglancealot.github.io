@@ -43,107 +43,107 @@ function forecastData() {
   getPosition()
   .then((position) => {
     console.log(position);
-    BrowserLatitude = position.latitude;
-    BrowserLongitude = position.longitude;
- 
-  var WeatherEndpoint = "https://api.open-meteo.com/v1/forecast?latitude=" + BrowserLatitude + "&longitude=" + BrowserLongitude + "&minutely_15=temperature_2m,relative_humidity_2m,apparent_temperature,rain,snowfall,weather_code,wind_speed_10m,lightning_potential,is_day&hourly=temperature_2m,rain,cloud_cover,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin&forecast_days=3&models=dmi_seamless";
-  console.log(WeatherEndpoint);
-  var NewEndpoint =
-    "https://api.open-meteo.com/v1/forecast?latitude=56.567&longitude=9.0271&minutely_15=temperature_2m,relative_humidity_2m,apparent_temperature,rain,snowfall,weather_code,wind_speed_10m,lightning_potential,is_day&hourly=temperature_2m,rain,cloud_cover,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin&forecast_days=3&models=dmi_seamless";
-  fetch(NewEndpoint)
-    .then((response) => response.json())
-    .then((data) => weatherData(data))
-    .catch((error) => console.error("Error:", error));
+    BrowserLatitude = position.coords.latitude;
+    BrowserLongitude = position.coords.longitude;
+  
+    var WeatherEndpoint = "https://api.open-meteo.com/v1/forecast?latitude=" + BrowserLatitude + "&longitude=" + BrowserLongitude + "&minutely_15=temperature_2m,relative_humidity_2m,apparent_temperature,rain,snowfall,weather_code,wind_speed_10m,lightning_potential,is_day&hourly=temperature_2m,rain,cloud_cover,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin&forecast_days=3&models=dmi_seamless";
+    console.log(WeatherEndpoint);
+    var NewEndpoint =
+      "https://api.open-meteo.com/v1/forecast?latitude=56.567&longitude=9.0271&minutely_15=temperature_2m,relative_humidity_2m,apparent_temperature,rain,snowfall,weather_code,wind_speed_10m,lightning_potential,is_day&hourly=temperature_2m,rain,cloud_cover,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin&forecast_days=3&models=dmi_seamless";
+    fetch(NewEndpoint)
+      .then((response) => response.json())
+      .then((data) => weatherData(data))
+      .catch((error) => console.error("Error:", error));
 
-  function weatherData(payload) {
+    function weatherData(payload) {
 
-    // Setting units for the various groupings: Daily, Hourly, Minutely
-    var DailyUnits = payload.daily_units;
-    var HourlyUnits = payload.hourly_units;
-    var MinutelyUnits = payload.minutely_15_units;
+      // Setting units for the various groupings: Daily, Hourly, Minutely
+      var DailyUnits = payload.daily_units;
+      var HourlyUnits = payload.hourly_units;
+      var MinutelyUnits = payload.minutely_15_units;
 
-    // Setting Min and max from daily payload
-    var MaxTemp =
-      payload.daily.temperature_2m_max + " " + DailyUnits.temperature_2m_max;
-    var MinTemp =
-      payload.daily.temperature_2m_min + " " + DailyUnits.temperature_2m_min;
-    var MinToMaxTemp =
-      payload.daily.temperature_2m_min[0] +
-      " - " +
-      payload.daily.temperature_2m_max[0] +
-      " " +
-      DailyUnits.temperature_2m_min;
+      // Setting Min and max from daily payload
+      var MaxTemp =
+        payload.daily.temperature_2m_max + " " + DailyUnits.temperature_2m_max;
+      var MinTemp =
+        payload.daily.temperature_2m_min + " " + DailyUnits.temperature_2m_min;
+      var MinToMaxTemp =
+        payload.daily.temperature_2m_min[0] +
+        " - " +
+        payload.daily.temperature_2m_max[0] +
+        " " +
+        DailyUnits.temperature_2m_min;
 
-    // Setting arrays and other variables for hourly temperatures
-    var ForecastTemp = payload.hourly.temperature_2m;
-    var Time = payload.hourly.time;
-    var ForecastArray = [];
-    ForecastArray = GetForecastDataArray(Time, ForecastTemp);
-    var ActualCurrentHour = GetCurrentHour();
-    var NextTemp = GetNextForecastItem(ForecastArray, ActualCurrentHour).Temperature + " " + HourlyUnits.temperature_2m;
+      // Setting arrays and other variables for hourly temperatures
+      var ForecastTemp = payload.hourly.temperature_2m;
+      var Time = payload.hourly.time;
+      var ForecastArray = [];
+      ForecastArray = GetForecastDataArray(Time, ForecastTemp);
+      var ActualCurrentHour = GetCurrentHour();
+      var NextTemp = GetNextForecastItem(ForecastArray, ActualCurrentHour).Temperature + " " + HourlyUnits.temperature_2m;
 
-    // Setting arrays and other variables for mitutely temperatures
-    var ActualCurrentQuarterHour = GetCurrentQuarterHour();
-    var CurrentDataTime = payload.minutely_15.time;
-    var CurrentDataTemp = payload.minutely_15.temperature_2m;
-    var minutelyTime = payload.minutely_15.time;
-    var minutelyTemperature = payload.minutely_15.temperature_2m;
-    var minutelyHumidity = payload.minutely_15.relative_humidity_2m;
-    var minutelyApparentTemperature = payload.minutely_15.apparent_temperature;
-    var minutelyRain = payload.minutely_15.rain;
-    var minutelySnowfall = payload.minutely_15.snowfall;
-    var minutelyWeatherCode = payload.minutely_15.weather_code;
-    var minutelyWindSpeed = payload.minutely_15.wind_speed_10m;
-    var minutelyLightningPotential = payload.minutely_15.lightning_potential;
-    var minutelyIsDay = payload.minutely_15.is_day;
+      // Setting arrays and other variables for mitutely temperatures
+      var ActualCurrentQuarterHour = GetCurrentQuarterHour();
+      var CurrentDataTime = payload.minutely_15.time;
+      var CurrentDataTemp = payload.minutely_15.temperature_2m;
+      var minutelyTime = payload.minutely_15.time;
+      var minutelyTemperature = payload.minutely_15.temperature_2m;
+      var minutelyHumidity = payload.minutely_15.relative_humidity_2m;
+      var minutelyApparentTemperature = payload.minutely_15.apparent_temperature;
+      var minutelyRain = payload.minutely_15.rain;
+      var minutelySnowfall = payload.minutely_15.snowfall;
+      var minutelyWeatherCode = payload.minutely_15.weather_code;
+      var minutelyWindSpeed = payload.minutely_15.wind_speed_10m;
+      var minutelyLightningPotential = payload.minutely_15.lightning_potential;
+      var minutelyIsDay = payload.minutely_15.is_day;
 
-    var MinutelyWeatherArr = GetMinutelyWeatherIntoArray(
-      minutelyTime,
-      minutelyTemperature,
-      minutelyHumidity,
-      minutelyApparentTemperature,
-      minutelyRain,
-      minutelySnowfall,
-      minutelyWeatherCode,
-      minutelyWindSpeed,
-      minutelyLightningPotential,
-      minutelyIsDay
-    );
+      var MinutelyWeatherArr = GetMinutelyWeatherIntoArray(
+        minutelyTime,
+        minutelyTemperature,
+        minutelyHumidity,
+        minutelyApparentTemperature,
+        minutelyRain,
+        minutelySnowfall,
+        minutelyWeatherCode,
+        minutelyWindSpeed,
+        minutelyLightningPotential,
+        minutelyIsDay
+      );
 
-    var CurrentWeatherArray = [];
-    CurrentWeatherArray = GetForecastDataArray(
-      CurrentDataTime,
-      CurrentDataTemp
-    );
+      var CurrentWeatherArray = [];
+      CurrentWeatherArray = GetForecastDataArray(
+        CurrentDataTime,
+        CurrentDataTemp
+      );
 
-    // Setting final variables for web, for current data
-    var WebCurrentData = GetNextForecastMinutelyItem(MinutelyWeatherArr, ActualCurrentQuarterHour);
-    console.log('Time: '+WebCurrentData.Hour+' \n Temperature: '+WebCurrentData.Temperature+' \n Humidity: '+WebCurrentData.Humidity+' \n ApparentTemperature: '+WebCurrentData.ApparentTemperature+' \n Rain: '+WebCurrentData.Rain+' \n Snowfall: '+WebCurrentData.Snowfall+' \n WeatherCode: '+WebCurrentData.WeatherCode.Code+' \n WindSpeed: '+WebCurrentData.WindSpeed+' \n LightningPotential: '+WebCurrentData.LightningPotential+' \n IsDay: '+WebCurrentData.IsDay);
+      // Setting final variables for web, for current data
+      var WebCurrentData = GetNextForecastMinutelyItem(MinutelyWeatherArr, ActualCurrentQuarterHour);
+      console.log('Time: '+WebCurrentData.Hour+' \n Temperature: '+WebCurrentData.Temperature+' \n Humidity: '+WebCurrentData.Humidity+' \n ApparentTemperature: '+WebCurrentData.ApparentTemperature+' \n Rain: '+WebCurrentData.Rain+' \n Snowfall: '+WebCurrentData.Snowfall+' \n WeatherCode: '+WebCurrentData.WeatherCode.Code+' \n WindSpeed: '+WebCurrentData.WindSpeed+' \n LightningPotential: '+WebCurrentData.LightningPotential+' \n IsDay: '+WebCurrentData.IsDay);
 
-    var WebCurrentTemp = WebCurrentData.Temperature + " " + MinutelyUnits.temperature_2m;
-    var WebCurrentHumidity = WebCurrentData.Humidity + " " + MinutelyUnits.relative_humidity_2m;
-    var WebCurrentApparentTemperature = WebCurrentData.ApparentTemperature + " " + MinutelyUnits.apparent_temperature;
-    var WebCurrentRain = WebCurrentData.Rain + " " + MinutelyUnits.rain;
-    var WebCurrentSnowfall = WebCurrentData.Snowfall + " " + MinutelyUnits.snowfall;
-    var WebCurrentWindSpeed = getWindDescription(WebCurrentData.WindSpeed).daDK +' ('+WebCurrentData.WindSpeed + " " + MinutelyUnits.wind_speed_10m+ ')';
+      var WebCurrentTemp = WebCurrentData.Temperature + " " + MinutelyUnits.temperature_2m;
+      var WebCurrentHumidity = WebCurrentData.Humidity + " " + MinutelyUnits.relative_humidity_2m;
+      var WebCurrentApparentTemperature = WebCurrentData.ApparentTemperature + " " + MinutelyUnits.apparent_temperature;
+      var WebCurrentRain = WebCurrentData.Rain + " " + MinutelyUnits.rain;
+      var WebCurrentSnowfall = WebCurrentData.Snowfall + " " + MinutelyUnits.snowfall;
+      var WebCurrentWindSpeed = getWindDescription(WebCurrentData.WindSpeed).daDK +' ('+WebCurrentData.WindSpeed + " " + MinutelyUnits.wind_speed_10m+ ')';
 
-    var CurrentWeatherCodeObj = GetWMOCodes(WebCurrentData.WeatherCode.Code);
-    var WebCurrentWeather = CurrentWeatherCodeObj.daDK +', '+ WebCurrentTemp;
-    var WebCurrentWeatherIcon = CurrentWeatherCodeObj.Image;
+      var CurrentWeatherCodeObj = GetWMOCodes(WebCurrentData.WeatherCode.Code);
+      var WebCurrentWeather = CurrentWeatherCodeObj.daDK +', '+ WebCurrentTemp;
+      var WebCurrentWeatherIcon = CurrentWeatherCodeObj.Image;
 
-    // Mapping values to elements
-    document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
-    //document.getElementById("WebCurrentTemp").textContent = WebCurrentTemp;
-    //document.getElementById("WebCurrentSnowfall").textContent = WebCurrentSnowfall;
-    document.getElementById("WebCurrentHumidity").textContent = WebCurrentHumidity;
-    document.getElementById("WebCurrentRain").textContent = WebCurrentRain;
-    document.getElementById("WebCurrentApparentTemperature").textContent = WebCurrentApparentTemperature;
-    document.getElementById("WebCurrentWindSpeed").textContent = WebCurrentWindSpeed;
-    document.getElementById("WebCurrentWeather").textContent = WebCurrentWeather;
-    document.getElementById("WebCurrentWeatherIcon").src = WebCurrentWeatherIcon; 
-    // Set update freq
-    setTimeout(forecastData, 1800000); // 30 minutes
-  }
+      // Mapping values to elements
+      document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
+      //document.getElementById("WebCurrentTemp").textContent = WebCurrentTemp;
+      //document.getElementById("WebCurrentSnowfall").textContent = WebCurrentSnowfall;
+      document.getElementById("WebCurrentHumidity").textContent = WebCurrentHumidity;
+      document.getElementById("WebCurrentRain").textContent = WebCurrentRain;
+      document.getElementById("WebCurrentApparentTemperature").textContent = WebCurrentApparentTemperature;
+      document.getElementById("WebCurrentWindSpeed").textContent = WebCurrentWindSpeed;
+      document.getElementById("WebCurrentWeather").textContent = WebCurrentWeather;
+      document.getElementById("WebCurrentWeatherIcon").src = WebCurrentWeatherIcon; 
+      // Set update freq
+      setTimeout(forecastData, 1800000); // 30 minutes
+    }
   })
   .catch((err) => {
     console.error(err.message);
