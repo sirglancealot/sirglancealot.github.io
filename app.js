@@ -50,7 +50,7 @@ function forecastData() {
     console.log(WeatherEndpoint);
     var NewEndpoint =
       "https://api.open-meteo.com/v1/forecast?latitude=56.567&longitude=9.0271&minutely_15=temperature_2m,relative_humidity_2m,apparent_temperature,rain,snowfall,weather_code,wind_speed_10m,lightning_potential,is_day&hourly=temperature_2m,rain,cloud_cover,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin&forecast_days=3&models=dmi_seamless";
-    fetch(NewEndpoint)
+    fetch(WeatherEndpoint)
       .then((response) => response.json())
       .then((data) => weatherData(data))
       .catch((error) => console.error("Error:", error));
@@ -130,7 +130,7 @@ function forecastData() {
       var CurrentWeatherCodeObj = GetWMOCodes(WebCurrentData.WeatherCode.Code);
       var WebCurrentWeather = CurrentWeatherCodeObj.daDK +', '+ WebCurrentTemp;
       var WebCurrentWeatherIcon = CurrentWeatherCodeObj.Image;
-
+      var WebPosition = 'Browser position, latitude: '+ BrowserLatitude +' longitude: ' + BrowserLongitude;
       // Mapping values to elements
       document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
       //document.getElementById("WebCurrentTemp").textContent = WebCurrentTemp;
@@ -141,6 +141,7 @@ function forecastData() {
       document.getElementById("WebCurrentWindSpeed").textContent = WebCurrentWindSpeed;
       document.getElementById("WebCurrentWeather").textContent = WebCurrentWeather;
       document.getElementById("WebCurrentWeatherIcon").src = WebCurrentWeatherIcon; 
+      document.getElementById("WebPosition").textContent = WebPosition
       // Set update freq
       setTimeout(forecastData, 1800000); // 30 minutes
     }
