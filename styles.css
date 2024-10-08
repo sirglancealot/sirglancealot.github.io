@@ -28,6 +28,7 @@ table {
     color: #616161; /* Sets the text color to bright blue */
     font-size: 150px; /* Sets the font size to 150 pixels */
     font-family: 'Ubuntu Condensed', sans-serif; /* Sets the font family */
+    text-shadow: 1px 4px 4px #3e3a3a;
 }
 
 .clock-session {
@@ -35,6 +36,7 @@ table {
     color: #616161; /* Sets the text color to bright blue */
     font-size: 25px; /* Sets the font size to 25 pixels */
     font-family: 'Ubuntu Condensed', sans-serif; /* Sets the font family */
+    text-shadow: 1px 4px 4px #3e3a3a8c;
 }
 
 .clock-container {
