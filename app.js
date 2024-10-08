@@ -30,23 +30,13 @@ function showTime() {
   setTimeout(showTime, 1000);
 }
 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(showPosition);
-  } else {
-    //x.innerHTML = "Geolocation is not supported by this browser.";
-    console.log('Geolocation is not supported by this browser');
-  }
-}
-function showPosition(position) {
-  //x.innerHTML = "Latitude: " + position.coords.latitude +
-  //"<br>Longitude: " + position.coords.longitude;
-  console.log('Latitude: ' + position.coords.latitude + ' Longitude: ' + position.coords.longitude);
-}
-
 function forecastData() {
-  var WeatherEndpoint =
-    "https://api.open-meteo.com/v1/forecast?latitude=56.567&longitude=9.0271&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin&forecast_days=1&models=dmi_seamless";
+  var BrowserPosition = getLocation();
+  var BrowserLatitude = BrowserPosition.coords.latitude;
+  var BrowserLongitude = BrowserPosition.coords.longitude;
+
+  var WeatherEndpoint = "https://api.open-meteo.com/v1/forecast?latitude=" + BrowserLatitude + "&longitude=" + BrowserLongitude + "&minutely_15=temperature_2m,relative_humidity_2m,apparent_temperature,rain,snowfall,weather_code,wind_speed_10m,lightning_potential,is_day&hourly=temperature_2m,rain,cloud_cover,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin&forecast_days=3&models=dmi_seamless";
+  console.log(WeatherEndpoint);
   var NewEndpoint =
     "https://api.open-meteo.com/v1/forecast?latitude=56.567&longitude=9.0271&minutely_15=temperature_2m,relative_humidity_2m,apparent_temperature,rain,snowfall,weather_code,wind_speed_10m,lightning_potential,is_day&hourly=temperature_2m,rain,cloud_cover,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin&forecast_days=3&models=dmi_seamless";
   fetch(NewEndpoint)
@@ -55,7 +45,7 @@ function forecastData() {
     .catch((error) => console.error("Error:", error));
 
   function weatherData(payload) {
-    getLocation();
+
     // Setting units for the various groupings: Daily, Hourly, Minutely
     var DailyUnits = payload.daily_units;
     var HourlyUnits = payload.hourly_units;
@@ -143,6 +133,22 @@ function forecastData() {
     // Set update freq
     setTimeout(forecastData, 1800000); // 30 minutes
   }
+}
+
+// Getting location from browser - returning a position object (user: position.coords.latitude and position.coords.longitude)
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(showPosition);
+  } else {
+    //x.innerHTML = "Geolocation is not supported by this browser.";
+    console.log('Geolocation is not supported by this browser');
+  }
+}
+function showPosition(position) {
+  //x.innerHTML = "Latitude: " + position.coords.latitude +
+  //"<br>Longitude: " + position.coords.longitude;
+  console.log('Latitude: ' + position.coords.latitude + ' Longitude: ' + position.coords.longitude);
+  return position;
 }
 
 // Generate object array combined with a timestamp and a value
