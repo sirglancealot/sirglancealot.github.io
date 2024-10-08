@@ -152,7 +152,7 @@ function showPosition(position) {
     "latitude":position.coords.latitude,
     "longitude":position.coords.longitude
   }
-  return posObj;
+  return JSON.parse(posObj);
 }
 
 // Generate object array combined with a timestamp and a value
