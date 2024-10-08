@@ -148,7 +148,7 @@ function showPosition(position) {
   //x.innerHTML = "Latitude: " + position.coords.latitude +
   //"<br>Longitude: " + position.coords.longitude;
   console.log('Latitude: ' + position.coords.latitude + ' Longitude: ' + position.coords.longitude);
-  return JSON.stringify(position);
+  return JSON.parse(position);
 }
 
 // Generate object array combined with a timestamp and a value
