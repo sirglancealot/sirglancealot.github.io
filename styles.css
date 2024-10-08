@@ -1,6 +1,6 @@
 body {
     background: white;
-    min-width: 400px;
+    min-width: 380px;
 }
 
 table {
@@ -28,7 +28,7 @@ table {
 .clock {
     text-align: center; /* Centers the text horizontally */
     color: #616161; /* Sets the text color to bright blue */
-    font-size: 150px; /* Sets the font size to 150 pixels */
+    font-size: 130px; /* Sets the font size to 150 pixels */
     font-family: 'Ubuntu Condensed', sans-serif; /* Sets the font family */
     text-shadow: 1px 4px 4px #3e3a3a;
 }
