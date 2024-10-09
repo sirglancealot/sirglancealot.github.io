@@ -1,11 +1,11 @@
 body {
-    background: white;
+    background: #fdffff;
     min-width: 370px;
 }
 
 table {
     min-width: 350px;
-    background-color: #ad8a6761; /* Light grey background for the table */
+    background-color: #dcd1c5; /* Light grey background for the table */
     margin-left: auto; /* Centers the table horizontally */
     margin-right: auto; /* Centers the table horizontally */
     width: 80%; /* Sets the table width to 80% of its container */
