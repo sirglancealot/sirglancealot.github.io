@@ -5,7 +5,7 @@ body {
 
 table {
     min-width: 350px;
-    background-color: #66472729; /* Light grey background for the table */
+    background-color: #ad8a6761; /* Light grey background for the table */
     margin-left: auto; /* Centers the table horizontally */
     margin-right: auto; /* Centers the table horizontally */
     width: 80%; /* Sets the table width to 80% of its container */
@@ -27,7 +27,7 @@ table {
 
 .clock {
     text-align: center; /* Centers the text horizontally */
-    color: #616161; /* Sets the text color to bright blue */
+    color: #ad8a67; /* Sets the text color to bright blue */
     font-size: 150px; /* Sets the font size to 150 pixels */
     font-family: 'Ubuntu Condensed', sans-serif; /* Sets the font family */
     text-shadow: 1px 4px 4px #3e3a3a;
@@ -35,7 +35,7 @@ table {
 
 .clock-session {
     text-align: center; /* Centers the text horizontally */
-    color: #616161; /* Sets the text color to bright blue */
+    color: #ad8a67; /* Sets the text color to bright blue */
     font-size: 25px; /* Sets the font size to 25 pixels */
     font-family: 'Ubuntu Condensed', sans-serif; /* Sets the font family */
     text-shadow: 1px 4px 4px #3e3a3a8c;
