@@ -297,7 +297,7 @@ function GetWMOCodes(WeatherCode) {
         { "Code": 0, "enUK": "Clear sky", "daDK": "Klart vejr", "Image":"https://openweathermap.org/img/wn/01d@2x.png" },
         { "Code": 1, "enUK": "Mainly clear", "daDK": "Mest klart vejr", "Image":"https://openweathermap.org/img/wn/01d@2x.png" },
         { "Code": 2, "enUK": "Partly cloudy", "daDK": "Delvist overskyet vejr", "Image":"https://openweathermap.org/img/wn/02d@2x.png" },
-        { "Code": 3, "enUK": "Overcast", "daDK": "Overskyet", "Image":"/img/wn/03d@2x.png" },
+        { "Code": 3, "enUK": "Overcast", "daDK": "Overskyet", "Image":"./img/03d@2x.png" },
         { "Code": 45, "enUK": "Fog", "daDK": "Tåget", "Image":"https://openweathermap.org/img/wn/50d@2x.png" },
         { "Code": 48, "enUK": "Depositing rime fog", "daDK": "Rimtåge", "Image":"https://openweathermap.org/img/wn/50d@2x.png" },
         { "Code": 51, "enUK": "Drizzle: Light", "daDK": "Let støvregn", "Image":"https://openweathermap.org/img/wn/09d@2x.png" },
