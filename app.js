@@ -244,7 +244,8 @@ function GetCurrentHour() {
 }
 
 function RemoveLeadingZero(value) {
-    return value.replace(/^0+(?=\d)/, '');
+  var StringValue = value.toString();
+  return StringValue.replace(/^0+(?=\d)/, '');
 }
 
 // Get current hour and quarter in format: 2024-10-04T11:15 (:00, :15, :30, :45)
