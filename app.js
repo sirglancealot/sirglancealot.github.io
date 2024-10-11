@@ -8,6 +8,8 @@ function showTime() {
   var m = date.getMinutes(); // 0 - 59
   var s = date.getSeconds(); // 0 - 59
   var session = "AM";
+  var dd = date.getDate();
+  var mm = date.getMonth();
 
   if (h == 0) {
     h = 12;
@@ -24,9 +26,11 @@ function showTime() {
 
   //var time = h + ":" + m + ":" + s + " " + session;
   var time = RemoveLeadingZero(h) + ":" + m;
+  var DateMonth = dd + '-' +mm;
   document.getElementById("MyClock").innerText = time;
   document.getElementById("MyClock").textContent = time;
   document.getElementById("MyClockSession").textContent = session;
+  document.getElementById("DateMonth").textContent = DateMonth;
 
   setTimeout(showTime, 1000);
 }
