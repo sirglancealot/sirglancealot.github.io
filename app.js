@@ -150,13 +150,13 @@ function GetDailyForecastData() {
       // Setting units for Daily values
       var DailyUnits = payload.daily_units;
       
-      // Setting Min and max from daily payload
-      var MaxTemp = payload.daily.temperature_2m_max + " " + DailyUnits.temperature_2m_max;
-      var MinTemp = payload.daily.temperature_2m_min + " " + DailyUnits.temperature_2m_min;
-      var MinToMaxTemp = payload.daily.temperature_2m_min[0] + " - " + payload.daily.temperature_2m_max[0] + " " + DailyUnits.temperature_2m_min;
+      // Setting variables for web from daily payload
+      var DailyDataObj = payload.daily;
+      var WebMinToMaxTemp = DailyDataObj.temperature_2m_min[0] + " - " + DailyDataObj.temperature_2m_max[0] + " " + DailyUnits.temperature_2m_min;
+      var WebDailyWeatherCode = GetWMOCodes(DailyDataObj.weather_code[0]).daDK +', '+ WebMinToMaxTemp;
 
       // Setting final variables for web, for daily data
-      document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
+      document.getElementById("WebDailyWeatherCode").textContent = WebDailyWeatherCode;
       
       // Set update freq
       setTimeout(GetDailyForecastData, 3600000); // 60 minutes
