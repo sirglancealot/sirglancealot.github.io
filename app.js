@@ -1,5 +1,6 @@
 showTime();
 GetCurrentData();
+GetDailyForecastData()
 
 function showTime() {
   var date = new Date();
@@ -79,12 +80,6 @@ function GetCurrentData() {
         minutelyWindSpeed,
         minutelyLightningPotential,
         minutelyIsDay
-      );
-
-      var CurrentWeatherArray = [];
-      CurrentWeatherArray = GetForecastDataArray(
-        CurrentDataTime,
-        CurrentDataTemp
       );
 
       // Setting final variables for web, for current data
@@ -174,29 +169,14 @@ function GetDailyForecastData() {
   //   });
   // }
   
-  // Get location values from geolocation
-  function getPosition (options) {
-    return new Promise(function (resolve, reject) {
-      navigator.geolocation.getCurrentPosition(resolve, reject, options);
-    });
-  }
-
-// Generate object array combined with a timestamp and a value
-function GetForecastDataArray(TimeArr, TempArr) {
-  var ForecastArr = [];
-  var map;
-  for (let i = 0; i < TimeArr.length; i++) {
-    map = {
-      Hour: TimeArr[i],
-      Temperature: TempArr[i],
-    };
-    ForecastArr.push(map);
-  }
-  return ForecastArr;
+// Get location values from geolocation
+function getPosition (options) {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject, options);
+  });
 }
 
 // Generate array for current weather (minutely): time, temperature_2m, relative_humidity_2m, apparent_temperature, rain, snowfall, weather_code, wind_speed_10m, lightning_potential, is_day
-
 function GetMinutelyWeatherIntoArray(
   Time,
   Temperature,
@@ -370,3 +350,18 @@ function getWindDescription(speed) {
     if (speed >= 1 && speed <= 5) return { daDK: "Næsten stille", enUK: "Almost silent" };
     return { daDK: "Stille", enUK: "Quiet" };
 }
+
+  // COMMENTED OUT - CURRENTLY NOT IN USE - CAN BE USED FOR HOURLY DATA
+// Generate object array combined with a timestamp and a value
+// function GetForecastDataArray(TimeArr, TempArr) {
+//   var ForecastArr = [];
+//   var map;
+//   for (let i = 0; i < TimeArr.length; i++) {
+//     map = {
+//       Hour: TimeArr[i],
+//       Temperature: TempArr[i],
+//     };
+//     ForecastArr.push(map);
+//   }
+//   return ForecastArr;
+// }
