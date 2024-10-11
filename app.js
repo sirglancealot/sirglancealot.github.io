@@ -96,7 +96,7 @@ function GetCurrentData() {
       var WebCurrentApparentTemperature = WebCurrentData.ApparentTemperature + "" + MinutelyUnits.apparent_temperature;
       var WebCurrentRain = WebCurrentData.Rain + "" + MinutelyUnits.rain;
       var WebCurrentSnowfall = WebCurrentData.Snowfall + "" + MinutelyUnits.snowfall;
-      var WebCurrentWindSpeed = getWindDescription(WebCurrentData.WindSpeed).daDK +' ('+WebCurrentData.WindSpeed + "" + MinutelyUnits.wind_speed_10m+ ')';
+      var WebCurrentWindSpeed = getWindDescription(WebCurrentData.WindSpeed).daDK +' ('+(WebCurrentData.WindSpeed / 3,6) + 'm/s)';// + MinutelyUnits.wind_speed_10m+ ')';
 
       var CurrentWeatherCodeObj = GetWMOCodes(WebCurrentData.WeatherCode.Code);
       var WebCurrentWeather = CurrentWeatherCodeObj.daDK +', '+ WebCurrentTemp;
@@ -155,8 +155,8 @@ function GetDailyForecastData() {
       var WebMinToMaxTemp = DailyDataObj.temperature_2m_min[0] + " - " + DailyDataObj.temperature_2m_max[0] + DailyUnits.temperature_2m_min;
       var WebDailyWeatherCode = GetWMOCodes(DailyDataObj.weather_code[0]).daDK +', '+ WebMinToMaxTemp;
       var WebDailyRainSum = DailyDataObj.rain_sum[0] + DailyUnits.rain_sum;
-      var WebDailyWindSpeed = DailyDataObj.wind_speed_10m_max[0] + DailyUnits.wind_speed_10m_max;
-      var WebDailyWindGusts = DailyDataObj.wind_gusts_10m_max[0] + DailyUnits.wind_gusts_10m_max;
+      var WebDailyWindSpeed = (DailyDataObj.wind_speed_10m_max[0] / 3,6) + 'm/s';//DailyUnits.wind_speed_10m_max;
+      var WebDailyWindGusts = (DailyDataObj.wind_gusts_10m_max[0] / 3,6) + 'm/s';//DailyUnits.wind_gusts_10m_max;
       var WebDailyDaylightDuration = (DailyDataObj.daylight_duration[0] / 3600).toString().substring(0,5) +'h';
       // Setting final variables for web, for daily data
       document.getElementById("WebDailyWeatherCode").textContent = WebDailyWeatherCode;
