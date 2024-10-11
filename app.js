@@ -127,7 +127,7 @@ function GetCurrentData() {
 function GetDailyForecastData() {
   var BrowserLatitude;
   var BrowserLongitude;
-   
+
   getPosition()
   .then((position) => {
     console.log(position);
@@ -167,12 +167,21 @@ function GetDailyForecastData() {
   });
 }
 
-// Get location values from geolocation
-var getPosition = function (options) {
-  return new Promise(function (resolve, reject) {
-    navigator.geolocation.getCurrentPosition(resolve, reject, options);
-  });
-}
+
+  // // Get location values from geolocation
+  // var getPosition = function (options) {
+  //   return new Promise(function (resolve, reject) {
+  //     navigator.geolocation.getCurrentPosition(resolve, reject, options);
+  //   });
+  // }
+
+  
+  // Get location values from geolocation
+  function getPosition (options) {
+    return new Promise(function (resolve, reject) {
+      navigator.geolocation.getCurrentPosition(resolve, reject, options);
+    });
+  }
 
 // Generate object array combined with a timestamp and a value
 function GetForecastDataArray(TimeArr, TempArr) {
