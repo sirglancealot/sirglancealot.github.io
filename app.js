@@ -10,7 +10,7 @@ function showTime() {
   var session = "AM";
   var dd = date.getDate();
   var mm = date.getMonth();
-  var monthNames = ["Jan", "Feb", "Mar", "Apr", "Maj", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"];
+  var monthNamesDaDK = ["Jan", "Feb", "Mar", "Apr", "Maj", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"];
 
   if (h == 0) {
     h = 12;
@@ -27,7 +27,7 @@ function showTime() {
 
   //var time = h + ":" + m + ":" + s + " " + session;
   var time = RemoveLeadingZero(h) + ":" + m;
-  var DateMonth = dd + ' ' +monthNames[mm] +'.';
+  var DateMonth = dd + ' ' +monthNamesDaDK[mm] +'.';
   document.getElementById("MyClock").innerText = time;
   document.getElementById("MyClock").textContent = time;
   document.getElementById("MyClockSession").textContent = session;
