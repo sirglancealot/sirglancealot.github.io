@@ -86,12 +86,12 @@ function GetCurrentData() {
       var WebCurrentData = GetNextForecastMinutelyItem(MinutelyWeatherArr, ActualCurrentQuarterHour);
       console.log('Time: '+WebCurrentData.Hour+' \n Temperature: '+WebCurrentData.Temperature+' \n Humidity: '+WebCurrentData.Humidity+' \n ApparentTemperature: '+WebCurrentData.ApparentTemperature+' \n Rain: '+WebCurrentData.Rain+' \n Snowfall: '+WebCurrentData.Snowfall+' \n WeatherCode: '+WebCurrentData.WeatherCode.Code+' \n WindSpeed: '+WebCurrentData.WindSpeed+' \n LightningPotential: '+WebCurrentData.LightningPotential+' \n IsDay: '+WebCurrentData.IsDay);
 
-      var WebCurrentTemp = WebCurrentData.Temperature + " " + MinutelyUnits.temperature_2m;
-      var WebCurrentHumidity = WebCurrentData.Humidity + " " + MinutelyUnits.relative_humidity_2m;
-      var WebCurrentApparentTemperature = WebCurrentData.ApparentTemperature + " " + MinutelyUnits.apparent_temperature;
-      var WebCurrentRain = WebCurrentData.Rain + " " + MinutelyUnits.rain;
-      var WebCurrentSnowfall = WebCurrentData.Snowfall + " " + MinutelyUnits.snowfall;
-      var WebCurrentWindSpeed = getWindDescription(WebCurrentData.WindSpeed).daDK +' ('+WebCurrentData.WindSpeed + " " + MinutelyUnits.wind_speed_10m+ ')';
+      var WebCurrentTemp = WebCurrentData.Temperature + "" + MinutelyUnits.temperature_2m;
+      var WebCurrentHumidity = WebCurrentData.Humidity + "" + MinutelyUnits.relative_humidity_2m;
+      var WebCurrentApparentTemperature = WebCurrentData.ApparentTemperature + "" + MinutelyUnits.apparent_temperature;
+      var WebCurrentRain = WebCurrentData.Rain + "" + MinutelyUnits.rain;
+      var WebCurrentSnowfall = WebCurrentData.Snowfall + "" + MinutelyUnits.snowfall;
+      var WebCurrentWindSpeed = getWindDescription(WebCurrentData.WindSpeed).daDK +' ('+WebCurrentData.WindSpeed + "" + MinutelyUnits.wind_speed_10m+ ')';
 
       var CurrentWeatherCodeObj = GetWMOCodes(WebCurrentData.WeatherCode.Code);
       var WebCurrentWeather = CurrentWeatherCodeObj.daDK +', '+ WebCurrentTemp;
@@ -147,11 +147,18 @@ function GetDailyForecastData() {
       
       // Setting variables for web from daily payload
       var DailyDataObj = payload.daily;
-      var WebMinToMaxTemp = DailyDataObj.temperature_2m_min[0] + " - " + DailyDataObj.temperature_2m_max[0] + " " + DailyUnits.temperature_2m_min;
+      var WebMinToMaxTemp = DailyDataObj.temperature_2m_min[0] + " - " + DailyDataObj.temperature_2m_max[0] + DailyUnits.temperature_2m_min;
       var WebDailyWeatherCode = GetWMOCodes(DailyDataObj.weather_code[0]).daDK +', '+ WebMinToMaxTemp;
-
+      var WebDailyRainSum = DailyDataObj.rain_sum[0] + DailyUnits.rain_sum;
+      var WebDailyWindSpeed = DailyDataObj.wind_speed_10m_max[0] + DailyUnits.wind_speed_10m_max;
+      var WebDailyWindGusts = DailyDataObj.wind_gusts_10m_max[0] + DailyUnits.wind_gusts_10m_max;
+      var WebDailyDaylightDuration = (DailyDataObj.daylight_duration[0] / 3600).toString().substring(0,5) +'h';
       // Setting final variables for web, for daily data
       document.getElementById("WebDailyWeatherCode").textContent = WebDailyWeatherCode;
+      document.getElementById("WebDailyRainSum").textContent = WebDailyRainSum;
+      document.getElementById("WebDailyWindSpeed").textContent = WebDailyWindSpeed;
+      document.getElementById("WebDailyWindGusts").textContent = WebDailyWindGusts;
+      document.getElementById("WebDailyWindGusts").textContent = WebDailyDaylightDuration;
       
       // Set update freq
       setTimeout(GetDailyForecastData, 3600000); // 60 minutes
