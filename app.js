@@ -162,7 +162,7 @@ function GetDailyForecastData() {
       document.getElementById("WebDailyRainSum").textContent = WebDailyRainSum;
       document.getElementById("WebDailyWindSpeed").textContent = WebDailyWindSpeed;
       document.getElementById("WebDailyWindGusts").textContent = WebDailyWindGusts;
-      document.getElementById("WebDailyWindGusts").textContent = WebDailyDaylightDuration;
+      document.getElementById("WebDailyDaylightDuration").textContent = WebDailyDaylightDuration;
       
       // Set update freq
       setTimeout(GetDailyForecastData, 3600000); // 60 minutes
