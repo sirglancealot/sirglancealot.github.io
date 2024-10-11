@@ -1,4 +1,6 @@
 # sirglancealot.github.io
+This is a project for the purpose of learning javascript, css and html. 
+
 # Data from: https://open-meteo.com
 More details: 
 
