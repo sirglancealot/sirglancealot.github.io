@@ -1,5 +1,5 @@
 showTime();
-forecastData();
+GetCurrentData();
 
 function showTime() {
   var date = new Date();
@@ -30,26 +30,19 @@ function showTime() {
   setTimeout(showTime, 1000);
 }
 
-function forecastData() {
+function GetCurrentData() {
   var BrowserLatitude;
   var BrowserLongitude;
- 
-  var getPosition = function (options) {
-    return new Promise(function (resolve, reject) {
-      navigator.geolocation.getCurrentPosition(resolve, reject, options);
-    });
-  }
-  
+   
   getPosition()
   .then((position) => {
     console.log(position);
     BrowserLatitude = position.coords.latitude;
     BrowserLongitude = position.coords.longitude;
   
-    var WeatherEndpoint = "https://api.open-meteo.com/v1/forecast?latitude=" + BrowserLatitude + "&longitude=" + BrowserLongitude + "&minutely_15=temperature_2m,relative_humidity_2m,apparent_temperature,rain,snowfall,weather_code,wind_speed_10m,lightning_potential,is_day&hourly=temperature_2m,rain,cloud_cover,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin&forecast_days=3&models=dmi_seamless";
+    var WeatherEndpoint = "https://api.open-meteo.com/v1/forecast?latitude=" + BrowserLatitude + "&longitude=" + BrowserLongitude + "&minutely_15=temperature_2m,relative_humidity_2m,apparent_temperature,rain,snowfall,weather_code,wind_speed_10m,lightning_potential,is_day&timezone=Europe%2FBerlin&forecast_days=3&models=dmi_seamless";
+    //var WeatherEndpoint = "https://api.open-meteo.com/v1/forecast?latitude=" + BrowserLatitude + "&longitude=" + BrowserLongitude + "&minutely_15=temperature_2m,relative_humidity_2m,apparent_temperature,rain,snowfall,weather_code,wind_speed_10m,lightning_potential,is_day&hourly=temperature_2m,rain,cloud_cover,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin&forecast_days=3&models=dmi_seamless";
     console.log(WeatherEndpoint);
-    var NewEndpoint =
-      "https://api.open-meteo.com/v1/forecast?latitude=56.567&longitude=9.0271&minutely_15=temperature_2m,relative_humidity_2m,apparent_temperature,rain,snowfall,weather_code,wind_speed_10m,lightning_potential,is_day&hourly=temperature_2m,rain,cloud_cover,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin&forecast_days=3&models=dmi_seamless";
     fetch(WeatherEndpoint)
       .then((response) => response.json())
       .then((data) => weatherData(data))
@@ -57,30 +50,8 @@ function forecastData() {
 
     function weatherData(payload) {
 
-      // Setting units for the various groupings: Daily, Hourly, Minutely
-      var DailyUnits = payload.daily_units;
-      var HourlyUnits = payload.hourly_units;
+      // Setting units for the current vaules (Minutely)
       var MinutelyUnits = payload.minutely_15_units;
-
-      // Setting Min and max from daily payload
-      var MaxTemp =
-        payload.daily.temperature_2m_max + " " + DailyUnits.temperature_2m_max;
-      var MinTemp =
-        payload.daily.temperature_2m_min + " " + DailyUnits.temperature_2m_min;
-      var MinToMaxTemp =
-        payload.daily.temperature_2m_min[0] +
-        " - " +
-        payload.daily.temperature_2m_max[0] +
-        " " +
-        DailyUnits.temperature_2m_min;
-
-      // Setting arrays and other variables for hourly temperatures
-      var ForecastTemp = payload.hourly.temperature_2m;
-      var Time = payload.hourly.time;
-      var ForecastArray = [];
-      ForecastArray = GetForecastDataArray(Time, ForecastTemp);
-      var ActualCurrentHour = GetCurrentHour();
-      var NextTemp = GetNextForecastItem(ForecastArray, ActualCurrentHour).Temperature + " " + HourlyUnits.temperature_2m;
 
       // Setting arrays and other variables for mitutely temperatures
       var ActualCurrentQuarterHour = GetCurrentQuarterHour();
@@ -132,8 +103,8 @@ function forecastData() {
       var WebCurrentWeatherIcon = CurrentWeatherCodeObj.Image;
       var WebPosition = 'Browser position, latitude: '+ BrowserLatitude +' longitude: '+BrowserLongitude;
       var WebPositionLink = '<a href="https://maps.google.com/?q='+BrowserLatitude+','+BrowserLongitude+' "target="_blank">Browser position, lat: '+ BrowserLatitude.toString().substring(0,6) +' long: '+BrowserLongitude.toString().substring(0,6)+'</a>';
+      
       // Mapping values to elements
-      document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
       //document.getElementById("WebCurrentTemp").textContent = WebCurrentTemp;
       //document.getElementById("WebCurrentSnowfall").textContent = WebCurrentSnowfall;
       document.getElementById("WebCurrentHumidity").textContent = WebCurrentHumidity;
@@ -145,11 +116,61 @@ function forecastData() {
       document.getElementById("WebPositionLink").innerHTML = WebPositionLink
       
       // Set update freq
-      setTimeout(forecastData, 1800000); // 30 minutes
+      setTimeout(GetCurrentData, 900000); // 15 minutes
     }
   })
   .catch((err) => {
     console.error(err.message);
+  });
+}
+
+function GetDailyForecastData() {
+  var BrowserLatitude;
+  var BrowserLongitude;
+   
+  getPosition()
+  .then((position) => {
+    console.log(position);
+    BrowserLatitude = position.coords.latitude;
+    BrowserLongitude = position.coords.longitude;
+  
+    var WeatherEndpoint = "https://api.open-meteo.com/v1/forecast?latitude=" + BrowserLatitude + "&longitude=" + BrowserLongitude + "&daily=weather_code,temperature_2m_max,temperature_2m_min,daylight_duration,sunshine_duration,rain_sum,showers_sum,snowfall_sum,precipitation_hours,precipitation_probability_max,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&timezone=Europe%2FBerlin&forecast_days=3&models=dmi_seamless";
+    console.log(WeatherEndpoint);
+    
+    // Endpoint fixed to Skive
+    // https://api.open-meteo.com/v1/forecast?latitude=56.567&longitude=9.0271&daily=weather_code,temperature_2m_max,temperature_2m_min,daylight_duration,sunshine_duration,rain_sum,showers_sum,snowfall_sum,precipitation_hours,precipitation_probability_max,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&timezone=Europe%2FBerlin&forecast_days=3&models=dmi_seamless
+
+    fetch(WeatherEndpoint)
+      .then((response) => response.json())
+      .then((data) => weatherData(data))
+      .catch((error) => console.error("Error:", error));
+
+    function weatherData(payload) {
+
+      // Setting units for Daily values
+      var DailyUnits = payload.daily_units;
+      
+      // Setting Min and max from daily payload
+      var MaxTemp = payload.daily.temperature_2m_max + " " + DailyUnits.temperature_2m_max;
+      var MinTemp = payload.daily.temperature_2m_min + " " + DailyUnits.temperature_2m_min;
+      var MinToMaxTemp = payload.daily.temperature_2m_min[0] + " - " + payload.daily.temperature_2m_max[0] + " " + DailyUnits.temperature_2m_min;
+
+      // Setting final variables for web, for daily data
+      document.getElementById("MinToMaxTemp").textContent = MinToMaxTemp;
+      
+      // Set update freq
+      setTimeout(GetDailyForecastData, 3600000); // 60 minutes
+    }
+  })
+  .catch((err) => {
+    console.error(err.message);
+  });
+}
+
+// Get location values from geolocation
+var getPosition = function (options) {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject, options);
   });
 }
 
